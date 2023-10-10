@@ -1,0 +1,15 @@
+{
+    "latex-workshop.latex.outDir": "../out",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-f",
+                "-silent",
+                "-outdir=%OUTDIR%",
+                "%DOC%",
+            ],
+        },
+    ]
+}
