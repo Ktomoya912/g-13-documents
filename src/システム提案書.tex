@@ -1,14 +1,16 @@
 \documentclass[a4paper,dvipdfmx]{jarticle}
 % 数式用
-\usepackage{amsmath, amsfonts}
-\usepackage{bm}
-\usepackage{amssymb}
+\usepackage{amsmath, amsfonts}  % 数式用
+\usepackage{bm} % 数式中の太字
+\usepackage{amssymb} % 記号
 % 画像用
-\usepackage{float}
-\usepackage[dvipdfmx]{graphicx}
-% 
-\usepackage{here}
-\usepackage{url}
+\usepackage{float} % 画像の挿入箇所を固定
+\usepackage[dvipdfmx]{graphicx} % 画像挿入用
+\usepackage{wrapfig} % 画像の周りに本文を流し込み
+% ページレイアウト
+\usepackage{here} % 画像を強制的に出力
+\usepackage{url} % URLリンク
+\usepackage[margin=20truemm]{geometry} %余白調整
 % 文字装飾
 \usepackage{color}
 \usepackage{ascmac}
@@ -42,13 +44,13 @@
     \centering
     \begin{minipage}
         {0.45\hsize}
-        \includegraphics[width=5cm]{./images/高知県人口推移.png}
+        \includegraphics[width=7cm]{./images/高知県人口推移.png}
         \caption{高知県の人口推移}
         \label{fig:KouchiPopulation}
     \end{minipage}
     \begin{minipage}
         {0.45\hsize}
-        \includegraphics[width=5cm]{./images/高齢化率比較.png}
+        \includegraphics[width=7cm]{./images/高齢化率比較.png}
         \caption{高知県と全国の高齢化率比較}
         \label{fig:KouchiAging}
     \end{minipage}
@@ -57,12 +59,12 @@
 \cite{bib:NaikakuKourei}と比べ7.0\%も高く、全国順位は2位
 \cite{bib:NaikakuChiki}であり、とても深刻な問題である。
 
-\begin{figure}[H]
+\begin{wrapfigure}{l}[0pt]{0.5\textwidth}
     \centering
-    \includegraphics[width=5cm]{./images/高齢化率順位.png}
+    \includegraphics[width=7.1cm]{./images/高齢化率順位.png}
     \caption{高知県の高齢化率順位}
     \label{fig:KouchiAgingRank}
-\end{figure}
+\end{wrapfigure}
 
 \par
 高齢化の波は祭りなどといった地域行事にまで及んでおり、
