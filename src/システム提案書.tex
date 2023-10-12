@@ -10,6 +10,14 @@
 % ページレイアウト
 \usepackage{here} % 画像を強制的に出力
 \usepackage{url} % URLリンク
+\usepackage{hyperref} % 
+\hypersetup{
+  colorlinks=false, % リンクに色をつけない設定
+  bookmarks=true, % 以下ブックマークに関する設定
+  bookmarksnumbered=true, % ブックマークに節番号などをつけるか
+  pdfborder={0 0 0}, % 枠なし
+  bookmarkstype=toc % 目次情報のブックマークを作る
+}
 \usepackage[margin=20truemm]{geometry} %余白調整
 % 文字装飾
 \usepackage{color}
@@ -19,17 +27,19 @@
 \begin{titlepage}
     \centering
     \LARGE
-    □□□株式会社様
+    システム提案書
     \\\vspace{1cm}
-    \textbf{地域密着型アルバイト求人アプリ\\システム提案書}
+    地域密着型アルバイト求人アプリ\\
+    \textbf{test}
     \\\vspace{4cm}
     第 1.0 版
     \\\vspace{4cm}
-    2023 年 10 月 10 日
+    \today
     \\\vspace{2.5cm}
     \textbf{ChaO!株式会社}
 \end{titlepage}
-
+\tableofcontents
+\newpage
 \section{現状の課題}
 高知県の若者の人口流出と高齢化の進行により、人口減少が深刻な状況である。
 令和4年10月1日時点で
@@ -117,6 +127,33 @@
 若者世代の獲得が困難となっている。そこで我々が提案するシステムを行事やイベントだけでなく、民営事業にも適応させていくことで、
 より多くの人に民営事業の存在を認知してもらうことが可能となり、
 同時に働き手の募集も可能となることから、民営事業の衰退を防ぐ起爆剤となり現状の課題を解決する手段となることができると考える。
+\section{ハードウェア構成・ソフトウェア構成}
+\subsection{ハードウェア構成}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{llll}
+        \hline
+        \multicolumn{1}{c}{項目} & \multicolumn{1}{c}{種類} & \multicolumn{1}{c}{数量} & \multicolumn{1}{c}{備考} \\ \hline
+        メインサーバー                & レンタルサーバ                & 1                      &                        \\
+        データベースサーバ              & レンタルサーバ                & 1                      &                        \\
+        管理者端末                  & デスクトップパソコン             & 1                      &                        \\
+        利用者端末                  & スマートフォン                & 利用者数                   &                        \\ \hline
+    \end{tabular}
+\end{table}
+\subsection{ソフトウェア構成}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+        \hline
+        \multicolumn{1}{c}{項目} & \multicolumn{1}{c}{ソフトウェア} & \multicolumn{1}{c}{備考} \\ \hline
+        バックエンド                 & FastAPI                    &                        \\
+        フロントエンド                & Flutter                    &                        \\
+        Webサーバ                 & Nginx                      &                        \\
+        データベース管理システム           & MySQL                      &                        \\
+        管理者端末                  & Ubuntsu 22.04              &                        \\
+        利用者端末                  & Android, iOS               &                        \\ \hline
+    \end{tabular}
+\end{table}
 \begin{thebibliography}{4}
     \bibitem{bib:KouchiData}
     高知県庁,
