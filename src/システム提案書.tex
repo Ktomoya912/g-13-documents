@@ -105,7 +105,7 @@
 % !ここに広告の影響度アンケートを挿入
 \begin{figure}[H]
     \centering
-    \includegraphics[width=12cm]{./images/adAction.png}
+    \includegraphics[width=11cm]{./images/adAction.png}
     \caption{広告が表示されたときにユーザーがとる行動~\cite{bib:AdvertiseImpression}より引用}
     \label{actionWhenAdvertise}
 \end{figure}
@@ -116,7 +116,7 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=12cm]{./images/広告についての考え.png}
+    \includegraphics[width=11cm]{./images/広告についての考え.png}
     \caption{広告についての考え~\cite{bib:AdvertiseImpression}より引用}
     \label{aboutAdvertise}
 \end{figure}
@@ -132,21 +132,18 @@
 この求人条件は、
 % !
 図\ref{fig:DailyJob}に示す弊社が109人に行った「日雇いバイトに興味がありますか」
-という質問に対する結果である「興味がある」が84.8\%という数字にも表れている通り、
-% !
+という質問に対する結果である「興味がある」が84.8\%という数字にも表れている通り、\par
+%! 日雇いバイトに興味がありますかのグラフ
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./images/日雇いバイトに興味がありますかv2.pdf}
+    \caption{\textbf{「日雇いバイトに興味がありますか？」}}
+    \label{fig:DailyJob}
+\end{figure}
 手軽に短期間でお金を手に入れたい大学生などの若者にとって、とても合致した条件となっているのである
 。そのため、若者は目当ての求人情報を取得するため、本アプリを使用して自主的に行事の広告情報を見聞きし、行事に対して興味関心を高めていくと考えられる。
 また、実際に行事で働くことによって、その行事に対して興味を持つことも考えられる。このようにして、利用者が能動的に広告情報を取得するため、
 クーポン券やカードのポイントなどの特典を用いることなくアプリの利用を促すことができ、同時に広告効果を得ることのできるアプリが行事特化求人アプリなのである。
-
-%! 日雇いバイトに興味がありますかのグラフ
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=7cm]{./images/日雇いバイトに興味がありますかv2.pdf}
-    \caption{\textbf{「日雇いバイトに興味がありますか？」}}
-    \label{fig:DailyJob}
-\end{figure}
-
 \par
 また、地域のスーパーや掲示板などでは宣伝目的のポスターや旗などが多く設置されているが、若者は紙などのアナログ媒体への興味は薄く、
 スマホ広告やSNS上のインフルエンサーによる広告に対して興味関心を持っていることが多い。
@@ -163,6 +160,7 @@
     \label{fig:InformationSource}
 \end{figure}
 % !ここにアンケートの結果を挿入
+
 そこで、スマートフォン上で扱える本アプリを用いることによって、若者に行事に対する興味関心を持たせるだけでなく、
 アナログ媒体である紙の印刷や、広告の設置料金を節約することができ、
 アプリに対する月額料金のみで、広告内容の変更が容易に可能となり、
@@ -178,18 +176,19 @@
 若者世代の獲得が困難となっている。そこで我々が提案するアプリを行事やイベントだけでなく、民営事業にも適応させていくことで、
 より多くの人に民営事業の存在を認知してもらうことが可能となり、
 同時に働き手の募集も可能となることから、民営事業の衰退を防ぐ起爆剤となり現状の課題を解決する手段となると考える。
+\clearpage
 \subsection{解決されると考えられる事象-求人を探す側(アプリ利用者側)への要求に応えられる}
+\begin{wrapfigure}{l}[0pt]{0.4\textwidth}
+    \centering
+    \includegraphics[width=8cm]{./images/イベントの日雇い求人等にv2.pdf}
+    \caption{\textbf{イベントの日雇い求人等に応募したいと思いますか？}}
+    \label{fig:EventDailyJob}
+\end{wrapfigure}
 弊社が調査したアンケート結果によると、上記の通り、
 「日雇いバイトに興味がありますか」というアンケートに対して「興味がある」が８割を超えており、
 「イベントの日雇い求人等に応募したいと思いますか」
 というアンケートに対しても応募したいが9割を占めていた。
 %! イベントの日雇い求人等に応募したいと思いますかのグラフ
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=9cm]{./images/イベントの日雇い求人等にv2.pdf}
-    \caption{\textbf{イベントの日雇い求人等に応募したいと思いますか？}}
-    \label{fig:EventDailyJob}
-\end{figure}
 このことから、イベントの日雇い求人を主に扱う本アプリの需要は確実である。
 また、当該アンケートでアルバイトを探す際に困った点を聞いたところ、以下が挙げられた。
 \begin{itemize}
@@ -358,49 +357,41 @@
 \subsection{情報の流れ}
 本システムにおける情報の流れを以下図\ref{fig:info_toroku}から図\ref{fig:info_job_oubo}に示す。
 \begin{figure}[H]
-    \begin{minipage}
-        {0.5\hsize}
-        \centering
-        \includegraphics[width=6cm]{./images/ChaO!_image/jyoho_toroku.pdf}
-        \caption{情報の流れ: 会員登録}
-        \label{fig:info_toroku}
-    \end{minipage}
-    \begin{minipage}
-        {0.5\hsize}
-        \centering
-        \includegraphics[width=6cm]{./images/ChaO!_image/jyoho_event_keisai.pdf}
-        \caption{情報の流れ: 行事・イベント情報掲載}
-        \label{fig:info_event_keisai}
-    \end{minipage}
+    \centering
+    \includegraphics[width=8cm]{./images/ChaO!_image/jyoho_toroku.pdf}
+    \caption{情報の流れ: 会員登録}
+    \label{fig:info_toroku}
 \end{figure}
 \begin{figure}[H]
-    \begin{minipage}
-        {0.5\hsize}
-        \centering
-        \includegraphics[width=7cm]{./images/ChaO!_image/jyoho_kyujin_bosyu.pdf}
-        \caption{情報の流れ: 求人情報掲載}
-        \label{fig:info_job_keisai}
-    \end{minipage}
-    \begin{minipage}
-        {0.5\hsize}
-        \centering
-        \includegraphics[width=7cm]{./images/ChaO!_image/jyoho_kyujin_oubo.pdf}
-        \caption{情報の流れ: 求人応募}
-        \label{fig:info_job_oubo}
-    \end{minipage}
+    \centering
+    \includegraphics[width=8cm]{./images/ChaO!_image/jyoho_event_keisai.pdf}
+    \caption{情報の流れ: 行事・イベント情報掲載}
+    \label{fig:info_event_keisai}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{./images/ChaO!_image/jyoho_kyujin_bosyu.pdf}
+    \caption{情報の流れ: 求人情報掲載}
+    \label{fig:info_job_keisai}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{./images/ChaO!_image/jyoho_kyujin_oubo.pdf}
+    \caption{情報の流れ: 求人応募}
+    \label{fig:info_job_oubo}
 \end{figure}
 
 \subsection{金銭の流れ}
-本システムにおける金銭の流れを図\ref{fig:money_event_keisai},図\ref{fig:money_job_keisai}に示す。
+本システムにおける金銭の流れを図\ref{fig:money_job_keisai}図,\ref{fig:money_event_keisai}に示す。
 \begin{figure}[H]
     \centering
-    \includegraphics[width=7cm]{images/ChaO!_image/okane_kyujin.pdf}
+    \includegraphics[width=8cm]{images/ChaO!_image/okane_kyujin.pdf}
     \caption{金銭の流れ: 求人情報掲載}
     \label{fig:money_job_keisai}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=7cm]{images/ChaO!_image/okane_event.pdf}
+    \includegraphics[width=8cm]{images/ChaO!_image/okane_event.pdf}
     \caption{金銭の流れ: 行事・イベント情報掲載}
     \label{fig:money_event_keisai}
 \end{figure}
@@ -530,6 +521,7 @@ $$
         項目     & 単価(円)   & 数量 & 金額      \\ \hline
         管理者用端末 & 100,000 & 6  & 600,000 \\
     \end{tabular}
+    \caption{初期費用}
 \end{table}
 また、運用費用は以下の通りとなる。
 \begin{table}[H]
@@ -540,6 +532,7 @@ $$
         人件費      & 3,000,000円/年 & 6  & 18,000,000 \\
         サーバーレンタル & 36,000円/年    & 1  & 36,000     \\
     \end{tabular}
+    \caption{運用費用}
 \end{table}
 よって５年間の費用合計は、
 $$
