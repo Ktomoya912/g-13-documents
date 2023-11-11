@@ -37,7 +37,6 @@
 
   - 求人 ID(primary)
   - 求人名
-  - 法人 ID(foreign)
   - イベント ID(foreign,optinal)
   - 作成日時
   - 更新日時
@@ -63,7 +62,6 @@
   - 作成日時
   - 更新日時
   - 掲載期間
-  - 法人 ID(foreign)
   - 求人 ID(foreign,optinal)
   - イベントの内容
   - イベントの日時
@@ -71,6 +69,12 @@
   - イベントの定員(optional)
   - イベントの注意事項(optional)
   - イベントの追加メッセージ(optional)
+
+- 投稿者情報
+
+  - ユーザー ID(foreign)
+  - イベント ID(foreign,optinal)
+  - 求人 ID(foreign,optinal)
   
 - レビュー
   
