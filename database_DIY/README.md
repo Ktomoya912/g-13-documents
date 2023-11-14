@@ -80,6 +80,8 @@
   | is_one_day         | NN   | Boolean       | 求人が単発か否か            |
   | period             | NN   | DateTime      | 求人の掲載期間              |
   | status             | NN   | Char(1)       | 求人のステータス            |
+  | created_by         | FK, NN | Integer      | 作成者                    |
+  | updated_by         | FK     | Integer      | 更新者                    |
 
 ### 勤務時間
   | カラム名   | 制約 | データ型 | 説明                    |
@@ -90,26 +92,28 @@
 
 
 ### イベント
-  | カラム名           | 制約 | データ型     | 説明                        |
-  | :----------------- | :--- | :----------- | :-------------------------- |
-  | id                 | PK   | Integer      | イベントを識別するための ID |
-  | name               | NN   | VarChar(255) | イベントの名前              |
-  | postal_code        | NN   | Char(7)      | イベントの郵便番号          |
-  | prefecture         | NN   | Char(31)     | イベントの都道府県          |
-  | city               | NN   | VarChar(255) | イベントの市区町村          |
-  | address            | NN   | VarChar(255) | イベントの番地・建物名      |
-  | phone_number       |      | Char(13)     | イベントの電話番号          |
-  | email              |      | VarChar(255) | イベントのメールアドレス    |
-  | homepage           |      | VarChar(255) | イベントのホームページ      |
-  | event_description  | NN   | Text         | イベントの内容              |
-  | participation_fee  |      | Integer      | イベントの参加費            |
-  | capacity           |      | Integer      | イベントの定員              |
-  | caution            |      | VarChar(255) | イベントの注意事項          |
-  | additional_message |      | VarChar(255) | イベントの追加メッセージ    |
-  | created_at         | NN   | DateTime     | イベントの作成日時          |
-  | updated_at         | NN   | DateTime     | イベントの更新日時          |
-  | period             | NN   | DateTime     | イベントの掲載期間          |
-  | status             | NN   | Char(1)      | イベントのステータス        |
+  | カラム名           | 制約   | データ型     | 説明                        |
+  | :----------------- | :----- | :----------- | :-------------------------- |
+  | id                 | PK     | Integer      | イベントを識別するための ID |
+  | name               | NN     | VarChar(255) | イベントの名前              |
+  | postal_code        | NN     | Char(7)      | イベントの郵便番号          |
+  | prefecture         | NN     | Char(31)     | イベントの都道府県          |
+  | city               | NN     | VarChar(255) | イベントの市区町村          |
+  | address            | NN     | VarChar(255) | イベントの番地・建物名      |
+  | phone_number       |        | Char(13)     | イベントの電話番号          |
+  | email              |        | VarChar(255) | イベントのメールアドレス    |
+  | homepage           |        | VarChar(255) | イベントのホームページ      |
+  | event_description  | NN     | Text         | イベントの内容              |
+  | participation_fee  |        | Integer      | イベントの参加費            |
+  | capacity           |        | Integer      | イベントの定員              |
+  | caution            |        | VarChar(255) | イベントの注意事項          |
+  | additional_message |        | VarChar(255) | イベントの追加メッセージ    |
+  | created_at         | NN     | DateTime     | イベントの作成日時          |
+  | updated_at         | NN     | DateTime     | イベントの更新日時          |
+  | period             | NN     | DateTime     | イベントの掲載期間          |
+  | status             | NN     | Char(1)      | イベントのステータス        |
+  | created_by         | FK, NN | Integer      | 作成者                    |
+  | updated_by         | FK     | Integer      | 更新者                    |
 
 
 ### イベント日程
@@ -118,14 +122,6 @@
   | event_id   | FK   | Integer  | イベントを識別するための ID |
   | start_time | NN   | DateTime | 開始時間                    |
   | end_time   | NN   | DateTime | 終了時間                    |
-
-### 投稿者情報
-
-  | カラム名 | 制約   | データ型 | 説明                        |
-  | :------- | :----- | :------- | :-------------------------- |
-  | user_id  | FK, NN | Integer  | ユーザーを識別するための ID |
-  | job_id   | FK     | Integer  | 求人を識別するための ID     |
-  | event_id | FK     | Integer  | イベントを識別するための ID |
   
 ### レビュー
   
