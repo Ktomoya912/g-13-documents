@@ -37,37 +37,1356 @@
   \today
   \\\vspace{2.5cm}
   \textbf{ChaO!株式会社}
+  \centering
+  \LARGE
+  外部設計書
+  \\\vspace{1cm}
+  地域密着型アルバイト求人アプリ\\
+  \textbf{REEL(Region Event Excitement Linkup)}
+  \\\vspace{4cm}
+  第 1.0 版
+  \\\vspace{4cm}
+  \today
+  \\\vspace{2.5cm}
+  \textbf{ChaO!株式会社}
 \end{titlepage}
 \tableofcontents
 \newpage
 \section{はじめに}
 本書では、弊社がシステム提案書で提案した地域密着型アルバイト求人アプリ「REEL」の詳細について示す。
-まず、本システムの要件を整理する。
-なお、主張の根拠はシステム提案書を参照されたい。
-その後、主に機能要件に関わる機能設計・UI設計を説明する。
-そして最後に、主に非機能要件に関わるデータベース設計・ネットワーク設計・運用・保守を説明する。
+まず，本システムの要件を整理する．
+なお，主張の根拠はシステム提案書を参照されたい．
+その後，主に機能要件に関わる機能設計・UI設計を説明する．
+そして最後に，主に非機能要件に関わるデータベース設計・ネットワーク設計・運用・保守を説明する．
 
 \section{システム概要}
-本アプリケーションREELは、イベント主催者や地域の法人などがイベント告知や、求人の掲載をスマートフォン上で行うことができるアプリケーションである。また、一般利用者はそれらの掲載された情報を基に、イベントや求人を検索することができる。本アプリケーションは、イベントや求人の掲載を行うことで、地域の活性化を図ることを目的としている。
-それぞれのユーザーは初めに利用規約に同意し、ユーザー登録を行うことで本アプリケーションを利用することができる。
+本アプリケーションREELは，
+イベント主催者や地域の法人などがイベント告知や，
+求人の掲載をスマートフォン上で行うことができる
+アプリケーションである．
+また、一般利用者はそれらの掲載された情報を基に，
+イベントや求人を検索することができる。本アプリケーションは，
+イベントや求人の掲載を行うことで，
+地域の活性化を図ることを目的としている．
+それぞれのユーザーは初めに利用規約に同意し，
+ユーザー登録を行うことで本アプリケーションを利用することができる．\par
+
+
+
+
+\clearpage
 \section{機能設計}
+本アプリの一般利用者，法人利用者の各機能設計について記述する．\par
 
-\subsubsection{一般利用者}
 
-\subsubsection{法人利用者}
+\subsection{一般利用者}
+本アプリの一般利用者向け機能設計を以降に記述する．\par
 
+\begin{itemize}
+  \item \textbf{新規会員登録}\par
+  一般利用者が情報を入力し，
+  その情報に不備がなく，
+  利用規約に同意し，
+  送信されたメールで本人確認を行うことで，
+  新規会員登録ができる機能である．
+  入力情報はユーザ名・メールアドレス
+  ・生年月日・性別・パスワード・パスワード（確認）である．\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/NewMemberRegistration.jpg}
+    \caption{新規会員登録機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{ログイン}\par
+  アプリ起動時に会員登録済みの利用者が，
+  自身のログイン情報を入力することで，
+  アプリのサービスを
+  利用することができるようにする機能である．
+  このとき，
+  前回のセッション情報が残っている(ログアウト状態ではない)場合，
+  ログイン情報を入力せずに，
+  ログインを行った状態にする．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/login.jpg}
+    \caption{ログイン機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{ログアウト}\par
+  ログアウトを選択することで，
+  ログイン前の状態に戻す機能であり，
+  ログアウト時にセッション情報を削除するため，
+  次回アプリ起動時にはログイン画面が表示される．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/logout.jpg}
+    \caption{ログアウト機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{退会}\par
+  会員が本アプリのサービスから退会することができる機能である．
+  「退会」選択時，確認画面が表示され
+  確認をシステムが受理した場合，システムが
+  対象会員のデータベースとセッション情報の削除を行う．\par
+  
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/withdrawal.jpg}
+    \caption{退会機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{パスワード再発行}\par
+  ログイン画面でパスワードを忘れた際に，
+  パスワードの再発行ができる機能である．
+  パスワード再発行には，
+  登録したユーザ名(ID)とメールアドレスを入力する必要がある．
+  送信されたメールに添付されるURLからパスワードの変更が可能．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/password.jpg}
+    \caption{パスワード再発行機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{会員情報確認・変更}\par
+  会員がアプリ内のマイページから自信の情報を確認または，
+  変更ができる機能である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/inf.jpg}
+    \caption{会員情報確認・変更機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{求人情報}\par
+  本アプリに掲載されている求人情報を確認することができる機能である．
+  ホーム画面(UI設計：4.0.1 一般利用者$-$図\ref{png:home})下側の左から三番目のアイコンを押すことで，
+  表示することが可能．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/Recruitment.jpg}
+    \caption{求人情報機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{行事・イベント情報表示}\par
+  本アプリに掲載されているイベント・行事情報を確認することができる機能である．
+  ホーム画面(UI設計：4.0.1 一般利用者$-$図\ref{png:home})下側の左から二番目のアイコンを押すことで，
+  表示することが可能．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/event.jpg}
+    \caption{行事・イベント情報表示機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{表示順変更}\par
+  掲載情報の表示順をブックマーク数などに変更することができる機能である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/Order.jpg}
+    \caption{表示順変更機能}
+    
+  \end{figure}
+  \clearpage
+
+
+  \item \textbf{ブックマーク（登録）}\par
+  掲載情報にブックマーク登録をすることができる機能である．
+  ブックマークに登録された情報は，
+  ブックマーク一覧から確認可能となり，
+  開催期間間近などの関連情報通知も受け取り可能となる．
+  すでにブックマーク登録済みの情報に関しては，
+  リストに入れるボタンが表示されず，
+  リストから外すというボタンが表示される．
+  イベント・行事と求人のブックマークリストは別々に表示される．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/BookMark.jpg}
+    \caption{ブックマーク（登録）機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{ブックマーク（削除）}\par
+  すでにブックマーク登録済みの情報に表示されている
+  リストから外すというボタンを押すことで，
+  ブックマークからその情報を外すことができる機能である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/BookMark_de.jpg}
+    \caption{ブックマーク（削除）機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{ブックマーク（表示）}\par
+  ブックマーク登録している情報を確認することができる機能である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/BookMark_dis.jpg}
+    \caption{ブックマーク（表示）機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{レビュー評価（イベント・行事）}\par
+  イベント・行事の詳細情報ページで，
+  評価(5段階)・レビュー文を記述することができる機能である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/rev.jpg}
+    \caption{レビュー評価機能（イベント・行事）}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{タグ分け}\par
+  検索結果画面，求人情報画面，イベント・行事画面から，
+  タグを選択することによって，
+  システムがタグ情報を検索，結果を表示する機能である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/tag.jpg}
+    \caption{タグ分け機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{検索}\par
+  会員が検索バーを用いて，
+  イベント・行事または求人を検索することができる機能である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/search.jpg}
+    \caption{検索機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{閲覧履歴}\par
+  イベント・行事，求人の詳細情報を閲覧履歴を表示させる機能である．
+  イベント・行事，求人は別々に表示される．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/history.jpg}
+    \caption{閲覧履歴機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{求人応募}\par
+  一般利用者が求人詳細情報画面から求人応募をすることができる機能である．
+  応募申請を行うと，ユーザ情報がシステムにより応募した求人の掲載者(法人)
+  へ送られる．\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/Apply.jpg}
+    \caption{求人応募機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{問い合わせ}\par
+  会員が本アプリ提供者(株式会社ChaO!)へ問い合わせすることができる機能である．\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/ask.jpg}
+    \caption{問い合わせ機能}
+    
+  \end{figure}
+  
+  
+\end{itemize}
+
+
+\clearpage
+
+
+
+
+
+\subsection{法人利用者}
+法人利用者の各機能設計について以降に記述する．\par
+
+\begin{itemize}
+  \item \textbf{新規会員登録}\par
+  一般利用者が情報を入力し，
+  その情報に不備がなく，
+  利用規約に同意し，
+  送信されたメールで本人確認を行うことで，
+  新規会員登録ができる機能である．
+  入力情報はユーザ名・メールアドレス
+  ・生年月日・性別・パスワード・パスワード（確認）である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/NewMemberRegistration.jpg}
+    \caption{新規会員登録機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{ログイン}\par
+  アプリ起動時に会員登録済みの利用者が，
+  自身のログイン情報を入力することで，
+  アプリのサービスを
+  利用することができるようにする機能である．
+  このとき，
+  前回のセッション情報が残っている(ログアウト状態ではない)場合，
+  ログイン情報を入力せずに，
+  ログインを行った状態にする．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/login.jpg}
+    \caption{ログイン機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{ログアウト}\par
+  ログアウトを選択することで，
+  ログイン前の状態に戻す機能であり，
+  ログアウト時にセッション情報を削除するため，
+  次回アプリ起動時にはログイン画面が表示される．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/logout.jpg}
+    \caption{ログアウト機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{退会}\par
+  会員が本アプリのサービスから退会することができる機能である．
+  「退会」選択時，確認画面が表示され
+  確認をシステムが受理した場合，システムが
+  対象会員のデータベースとセッション情報の削除を行う．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/withdrawal.jpg}
+    \caption{退会機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{パスワード再発行}\par
+  ログイン画面でパスワードを忘れた際に，
+  パスワードの再発行ができる機能である．
+  パスワード再発行には，
+  登録したユーザ名(ID)とメールアドレスを入力する必要がある．
+  送信されたメールに添付されるURLからパスワードの変更が可能．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/password.jpg}
+    \caption{パスワード再発行機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{会員情報確認・変更}\par
+  会員がアプリ内のマイページから自信の情報を確認または，
+  変更ができる機能である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/general/inf.jpg}
+    \caption{会員情報確認・変更機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{求人情報新規掲載}\par
+  法人利用者が，
+  求人広告掲載を行うことができる機能である．
+  掲載した情報は掲載情報一覧から確認することが可能である．\par
+  ※掲載内容入力前に料金プラン選択を行う必要がある．\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/corporation/publish_kyu.jpg}
+    \caption{求人情報新規掲載機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{求人情報変更}\par
+  法人利用者が自信の掲載情報を変更することができる機能である．\par
+  ※料金プランの変更は不可能．また，掲載期間内のみ変更可能である．\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/corporation/publish_kyu_he.jpg}
+    \caption{求人情報変更機能}
+    
+  \end{figure}
+  \clearpage
+
+
+  \item \textbf{求人情報削除}\par
+  法人利用者が自信の掲載を削除(取り下げ)することができる機能である．
+  掲載期間外の場合であっても削除可能である(2年経過した掲載情報は自動的に削除される)．\par
+  ※掲載期間内に削除した場合であっても，残りの期間分の返金は不可能とする．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/corporation/publish_kyu_de.jpg}
+    \caption{求人情報削除機能}
+    
+  \end{figure}
+  \clearpage
+
+
+  \item \textbf{イベント・行事情報新規掲載}\par
+  法人利用者が，
+  イベント・行事広告掲載を行うことができる機能である．
+  掲載した情報は掲載情報一覧から確認することが可能である．\par
+  ※掲載内容入力前に料金プランの確認をする必要がある．\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/corporation/publish_eve.jpg}
+    \caption{イベント・行事情報新規掲載機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{イベント・行事情報変更}\par
+  法人利用者が自信の掲載情報を変更することができる機能である．\par
+  ※掲載期間内のみ変更可能である．\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/corporation/publish_eve_he.jpg}
+    \caption{イベント・行事情報変更機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{イベント・行事情報削除}\par
+  法人利用者が自信の掲載を削除(取り下げ)することができる機能である．
+  掲載期間外の場合であっても削除可能である(2年経過した掲載情報は自動的に削除される)．\par
+  ※掲載期間内に削除した場合であっても，残りの期間分の返金は不可能とする．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/corporation/publish_eve_de.jpg}
+    \caption{イベント・行事情報削除機能}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{問い合わせ}\par
+  会員が本アプリ提供者(株式会社ChaO!)へ問い合わせすることができる機能である．\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{./diagrams/corporation/ask.jpg}
+    \caption{問い合わせ機能}
+    
+  \end{figure}
+
+
+\end{itemize}
+
+
+
+\clearpage
 \section{UI設計}
 
-\subsubsection{一般利用者}
+\subsection{一般利用者}
 
-\subsubsection{法人利用者}
+\begin{itemize}
+\item \textbf{ログイン画面（ファーストビュー）}\par
+アプリ起動時，未会員であるまたは，ログイン状態でなければこの画面が表示される．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/general/login.png}
+    \caption{ログイン画面（ファーストビュー）}
+    
+  \end{figure}
+
+  \clearpage
+
+  \item \textbf{新規会員登録画面/完了画面}\par
+  新規会員登録を行う場合，図\ref{png:NewMenber}が表示され，
+  登録完了後図\ref{png:NewMenberFin}の画面が表示される．\par
+
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.36]{./pngs/general/NewMenber.png}
+      \caption{新規会員登録画面}
+      \label{png:NewMenber}
+    \end{minipage}
+    \begin{minipage}[b]{0.54\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.36]{./pngs/general/NewMenber_inf.png}
+      \caption{新規会員登録記入画面}
+    \end{minipage}
+  \end{figure}\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{./pngs/general/NewMenber_fin.png}
+    \caption{新規会員登録完了画面}
+    \label{png:NewMenberFin}
+  \end{figure}
+
+  \clearpage
+
+  \item \textbf{パスワード再発行画面/送信完了画面}\par
+  パスワードの再発行を行う際に, 
+  図\ref{png:pass}が表示され，
+  メールアドレス入力後，
+  メールが送信されると図\ref{png:passM}が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general/pass.png}
+      \caption{パスワード再発行画面}
+      \label{png:pass}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general/pass_fin.png}
+      \caption{送信完了画面}
+      \label{png:passM}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{問い合わせ画面/送信完了画面}\par
+  問い合わせを行う際に表示される画面であり，
+  図\ref{png:ask}で問い合わせ内容記述後，
+  「送信する」を押し無事に送信されれば，
+  図\ref{png:askFin}の画面が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general/ask.png}
+      \caption{問い合わせ画面}
+      \label{png:ask}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general/ask_fin.png}
+      \caption{送信完了画面}
+      \label{png:askFin}
+    \end{minipage}
+  \end{figure}
+
+\clearpage
+
+
+
+  \item \textbf{ホーム（トップ）画面}\par
+  会員登録済みでログイン状態であればこのホーム（トップ）画面が
+  表示される．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/general_home/home.png}
+    \caption{ホーム（トップ）画面}
+    \label{png:home}
+    
+  \end{figure}
+
+  \clearpage
+  \item \textbf{通知画面}\par
+  各お知らせ情報が見れる画面であり，図\ref{png:notice}から
+  図\ref{png:noticeInf}の詳細画面に移ることが出来る．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_home/notice.png}
+      \caption{通知一覧画面}
+      \label{png:notice}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_home/notice_inf.png}
+      \caption{通知詳細画面}
+      \label{png:noticeInf}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+  
+
+
+
+
+  \item \textbf{マイページ画面}\par
+  画面右下のアイコンを押すことでこのマイページ画面が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_mypage/mypage.png}
+      \caption{マイページ画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_mypage/mypage_inf.png}
+      \caption{マイページ全体画面}
+    \end{minipage}
+  \end{figure}
+
+
+  \clearpage
+
+
+  \item \textbf{会員情報確認・変更画面}\par
+  会員情報確認画面（図\ref{png:menberInf}）から，
+  「会員情報を編集」で図\ref{png:menberhe}の
+  会員情報変更画面が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_mypage/myinf.png}
+      \caption{会員情報確認画面}
+      \label{png:menberInf}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_mypage/myinf_hen.png}
+      \caption{会員情報変更画面}
+      \label{png:menberhe}
+    \end{minipage}
+  \end{figure}
+
+\clearpage
+
+
+  \item \textbf{ログアウト画面}\par
+  ログアウト時に表示される確認画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/general_mypage/logout.png}
+    \caption{ログアウト画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{退会画面}\par
+  図\ref{png:with}退会するときに表示される画面であり，
+  退会するを選択した場合，
+  図\ref{png:withC}の確認画面が表示され，
+  退会が完了すれば，\ref{png:withFin}の画面が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.36]{./pngs/general_mypage/withdrawal.png}
+      \caption{退会画面}
+      \label{png:with}
+    \end{minipage}
+    \begin{minipage}[b]{0.54\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.36]{./pngs/general_mypage/withdrawal_inf.png}
+      \caption{退会確認画面}
+      \label{png:withC}
+    \end{minipage}
+  \end{figure}\par
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=4.5cm]{./pngs/general_mypage/withdrawal_fin.png}
+    \caption{退会完了画面}
+    \label{png:withFin}
+    
+  \end{figure}
+\clearpage
+
+  \item \textbf{エラー画面}\par
+  エラー発生時に表示される画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/general_mypage/ErrScreen.png}
+    \caption{エラー画面}
+    
+  \end{figure}
+
+\clearpage
+
+  \item \textbf{イベント・行事表示画面/求人表示画面}\par
+  イベント・行事一覧，求人一覧ページを表示させた際の画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_event/eve_ad.png}
+      \caption{イベント・行事表示画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_recruit/rec_ad.png}
+      \caption{求人表示画面}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{ブックマーク一覧（イベント・行事/求人）画面}\par
+  イベント・行事，求人情報で，
+  ブックマーク登録した項目の一覧を表示させる画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_event/eve_bm.png}
+      \caption{ブックマーク一覧（イベント・行事）画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_recruit/rec_bookmark.png}
+      \caption{ブックマーク一覧（求人）画面}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{閲覧履歴（イベント・行事/求人）}\par
+  イベント・行事，求人情報で，
+  詳細情報を閲覧した項目の一覧が表示される画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_event/eve_history.png}
+      \caption{閲覧履歴（イベント・行事）画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_recruit/rec_history.png}
+      \caption{閲覧履歴（求人）画面}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{閲覧履歴削除画面}\par
+  閲覧履歴を削除する際に，表示される確認画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/general_event/history_de.png}
+    \caption{閲覧履歴削除画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{イベント・行事詳細画面}\par
+  イベント・行事一覧画面から任意の項目を選ぶことで表示される，
+  その選択した項目の詳細情報画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_event/eve_inf1.png}
+      \caption{イベント・行事詳細画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_event/eve_inf2.png}
+      \caption{イベント・行事詳細全体画面}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+
+  \item \textbf{求人詳細画面}\par
+  求人一覧画面から任意の項目を選ぶことで表示される，
+  その選択した項目の詳細情報画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_recruit/rec_inf1.png}
+      \caption{求人詳細画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/general_recruit/rec_inf2.png}
+      \caption{求人詳細全体画面}
+    \end{minipage}
+  \end{figure}
+
+
+\clearpage
+  \item \textbf{求人応募履歴画面}\par
+  利用者が応募した求人情報が表示される画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/general_home/apply_history.png}
+    \caption{求人応募履歴画面}
+    
+  \end{figure}
+
+\clearpage
+  \item \textbf{求人応募履歴削除画面}\par
+  求人応募履歴を削除する際に表示される確認画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/general_home/apply_his_de.png}
+    \caption{求人応募履歴削除画面}
+    
+  \end{figure}
+
+
+
+
+\end{itemize}
+\clearpage
+
+
+\subsection{法人利用者}
+\begin{itemize}
+  \item \textbf{ログイン画面（ファーストビュー）}\par
+  アプリ起動時，ログイン状態でなければこの画面が表示される．\par
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=9cm]{./pngs/cor_login/login.png}
+      \caption{ログイン画面（ファーストビュー）}
+      
+    \end{figure}
+    \clearpage
+
+    \item \textbf{新規法人登録画面}\par
+    新規法人登録を行う際に，表示される画面である．\par
+    　　\par
+    \begin{figure}[H]
+      \begin{minipage}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_login/NewMenber.png}
+        \caption{新規法人登録画面}
+      \end{minipage}
+      \begin{minipage}[b]{0.6\linewidth}
+        \centering
+        \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_login/NewMenber_inf.png}
+        \caption{新規法人登録全体画面}
+      \end{minipage}
+    \end{figure}
+  \clearpage
+
+  \item \textbf{利用規約画面}\par
+  「利用規約」を押した際に表示される画面である．\par
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=9cm]{./pngs/cor_login/rule.png}
+      \caption{利用規約画面}
+      
+    \end{figure}
+    \clearpage
+
+  \item \textbf{新規法人登録完了画面}\par
+  登録が完了した際に表示される画面である．\par
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=9cm]{./pngs/cor_login/NewMenber_fin.png}
+      \caption{新規法人登録完了画面}
+      
+    \end{figure}
+    \clearpage
+
+    \item \textbf{ホーム（トップ）画面}\par
+  法人会員としてログイン状態であればこのホーム（トップ）画面が
+  表示される．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_home/home.png}
+    \caption{ホーム（トップ）画面}
+    
+  \end{figure}
+
+  \clearpage
+  \item \textbf{通知画面}\par
+  各お知らせ情報が見れる画面であり，図\ref{png:cnotice}から
+  図\ref{png:cnoticeInf}の詳細画面に移ることが出来る．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_home/notice.png}
+      \caption{通知一覧画面}
+      \label{png:cnotice}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_home/notice_inf.png}
+      \caption{通知詳細画面}
+      \label{png:cnoticeInf}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+
+  \item \textbf{マイページ画面}\par
+  画面右下のアイコンを押すことでこのマイページ画面が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/mypage.png}
+      \caption{マイページ画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/mypage_sc.png}
+      \caption{マイページ全体画面}
+    \end{minipage}
+  \end{figure}
+
+
+  \clearpage
+
+
+  \item \textbf{会員情報確認画面}\par
+  会員情報確認
+  する際に表示される画面（図\ref{png:cmenberInf}）である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/cor_inf.png}
+      \caption{会員情報確認画面}
+      \label{png:cmenberInf}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/cor_inf_sc.png}
+      \caption{会員情報確認全体画面}
+      \label{png:cmenbersc}
+    \end{minipage}
+  \end{figure}
+
+\clearpage
+
+\item \textbf{会員情報変更画面}\par
+  会員情報確認画面（図\ref{png:cmenberInf}）から，
+  「会員情報を編集」で図\ref{png:cmenberhe}の
+  会員情報変更画面が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/cor_inf_he.png}
+      \caption{会員情報変更画面}
+      \label{png:cmenberhe}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/cor_inf_he_sc.png}
+      \caption{会員情報変更全体画面}
+      \label{png:cmenberhesc}
+    \end{minipage}
+  \end{figure}
+
+\clearpage
+
+\item \textbf{パスワード再発行画面/送信完了画面}\par
+  パスワードの再発行を行う際に, 
+  図\ref{png:cpass}が表示され，
+  メールアドレス入力後，
+  メールが送信されると図\ref{png:cpassM}が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/pass.png}
+      \caption{パスワード再発行画面}
+      \label{png:cpass}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/pass_fin.png}
+      \caption{送信完了画面}
+      \label{png:cpassM}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{問い合わせ画面/送信完了画面}\par
+  問い合わせを行う際に表示される画面であり，
+  図\ref{png:cask}で問い合わせ内容記述後，
+  「送信する」を押し無事に送信されれば，
+  図\ref{png:caskFin}の画面が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/ask.png}
+      \caption{問い合わせ画面}
+      \label{png:cask}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/ask_fin.png}
+      \caption{送信完了画面}
+      \label{png:caskFin}
+    \end{minipage}
+  \end{figure}
+
+\clearpage
+
+
+
+
+
+  \item \textbf{ログアウト画面}\par
+  ログアウト時に表示される確認画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_mypage/logout.png}
+    \caption{ログアウト画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{退会画面}\par
+  退会する際に，
+  図\ref{png:cwithC}の退会確認画面が表示され，
+  退会が完了すれば，\ref{png:cwithFin}の画面が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/cor_withdaral.png}
+      \caption{退会確認画面}
+      \label{png:cwithC}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/cor_withdaral_fin.png}
+      \caption{退会完了画面}
+      \label{png:cwithFin}
+    \end{minipage}
+  \end{figure}\par
+
+\clearpage
+
+  \item \textbf{エラー画面}\par
+  エラー発生時に表示される画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_mypage/ErrScreen.png}
+    \caption{エラー画面}
+    
+  \end{figure}
+
+\clearpage
+
+
+
+\item \textbf{求人応募者一覧画面}\par
+求人応募申請をした一般利用者の一覧を表示する画面である．\par
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=9cm]{./pngs/cor_mypage/apply_list.png}
+      \caption{求人応募者一覧画面}
+      
+    \end{figure}
+    \clearpage
+
+\item \textbf{求人応募者確認画面}\par
+    求人応募をした一般利用者を一覧画面から，
+    応募者の確認をした際に図\ref{png:apC}
+    が表示され，確認が完了すれば図\ref{png:apCC}が表示される．\par
+    　　\par
+    \begin{figure}[H]
+      \begin{minipage}[b]{0.45\linewidth}
+        \centering
+        \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/apply_list_inf.png}
+        \caption{求人応募者確認画面}
+        \label{png:apC}
+      \end{minipage}
+      \begin{minipage}[b]{0.6\linewidth}
+        \centering
+        \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/apply_list_fin.png}
+        \caption{求人応募者確認完了画面}
+        \label{png:apCC}
+      \end{minipage}
+    \end{figure}
+  \clearpage
+
+  
+
+
+  \item \textbf{ブックマーク一覧（イベント・行事/求人）画面}\par
+  イベント・行事，求人情報で，
+  ブックマーク登録した項目の一覧を表示させる画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_eve/eve_bm.png}
+      \caption{ブックマーク一覧（イベント・行事）画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_rec/rec_bm.png}
+      \caption{ブックマーク一覧（求人）画面}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{閲覧履歴（イベント・行事/求人）}\par
+  イベント・行事，求人情報で，
+  詳細情報を閲覧した項目の一覧が表示される画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_eve/eve_history.png}
+      \caption{閲覧履歴（イベント・行事）画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_rec/rec_history.png}
+      \caption{閲覧履歴（求人）画面}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{閲覧履歴削除画面}\par
+  閲覧履歴を削除する際に，表示される確認画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_share/history_de.png}
+    \caption{閲覧履歴削除画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{イベント・行事詳細画面}\par
+  イベント・行事一覧画面から任意の項目を選ぶことで表示される，
+  その選択した項目の詳細情報画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_eve/eve_inf.png}
+    \caption{イベント・行事詳細画面画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{求人詳細画面}\par
+  求人一覧画面から任意の項目を選ぶことで表示される，
+  その選択した項目の詳細情報画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_rec/rec_inf.png}
+    \caption{求人詳細画面画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{イベント・行事掲載料金プラン画面}\par
+  掲載ページ作成時（作成ページ移行前）に表示される画面であり，
+  イベント・行事掲載料金プラン確認画面となっている．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_mypage/eve_pub_plan.png}
+    \caption{イベント・行事掲載料金プラン画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{イベント・行事掲載ページ作成画面}\par
+  イベント・行事を掲載する際に，
+  その内容を記述する画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_eve/eve_pub_create.png}
+      \caption{イベント・行事掲載ページ作成画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.36]{./pngs/cor_eve/eve_pub_create_sc.png}
+      \caption{イベント・行事掲載ページ作成全体画面}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{投稿完成図画面}\par
+  掲載ページ作成画面から，
+  現段階での投稿完成図を表示する画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_eve/PostScreen.png}
+    \caption{投稿完成図画面}
+    
+  \end{figure}
+  \clearpage
+
+  
+  \item \textbf{求人広告掲載料金プラン画面}\par
+  掲載ページ作成時（作成ページ移行前）に，
+  求人広告掲載料金プラン選択画面（図\ref{png:fee}）が表示され，
+  選択後，プラン確定画面（図\ref{png:feec}）が表示される．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/rec_pub_fee.png}
+      \caption{求人掲載料金プラン選択画面}
+      \label{png:fee}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_mypage/rec_pub_plan.png}
+      \caption{求人掲載料金プラン確認画面}
+    \end{minipage}
+    \label{png:feec}
+  \end{figure}
+  \clearpage
+
+
+
+  \item \textbf{求人掲載ページ作成画面}\par
+  求人広告を掲載する際に，
+  その内容を記述する画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_rec/rec_pub_create.png}
+      \caption{求人掲載ページ作成画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.36]{./pngs/cor_rec/rec_pub_create_sc.png}
+      \caption{求人掲載ページ作成全体画面}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{作成途中移動画面}\par
+  掲載ページ作成画面から，
+  他画面へ移動する動作を行った際に表示される画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_share/ScreenMove.png}
+    \caption{作成途中移動画面}
+    
+  \end{figure}
+  \clearpage
+
+  
+  \item \textbf{投稿確認画面}\par
+  掲載ページ作成画面から，
+  投稿する際に表示される画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_share/PostCheck.png}
+    \caption{投稿確認画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{必須項目不足画面}\par
+  必須項目が入力されていない状態で，
+  情報を登録した際に表示される画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_share/ins_req_inf.png}
+    \caption{必須項目不足画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{料金振込先画面}\par
+  掲載内容確定時に表示される，
+  料金振込口座先情報が書かれた画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_mypage/transfer.png}
+    \caption{料金振込先画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{投稿広告一覧（イベント・行事/求人）画面}\par
+  すでに投稿済みの広告一覧を表示する画面である．\par
+  \begin{figure}[H]
+    \begin{minipage}[b]{0.45\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_eve/eve_list.png}
+      \caption{投稿広告一覧（イベント・行事）画面}
+    \end{minipage}
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[keepaspectratio, scale=0.6]{./pngs/cor_rec/rec_list.png}
+      \caption{投稿広告一覧（求人）画面}
+    \end{minipage}
+  \end{figure}
+  \clearpage
+
+  \item \textbf{投稿削除画面}\par
+  投稿した広告を削除する際に表示される画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_share/Post_de.png}
+    \caption{投稿削除画面}
+    
+  \end{figure}
+  \clearpage
+
+  \item \textbf{インプレッション画面}\par
+  投稿した広告のインプレッション情報を表示する画面である．\par
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{./pngs/cor_eve/impression.png}
+    \caption{料金振込先画面}
+    
+  \end{figure}
+  \clearpage
+
+
+
+  
+  \end{itemize}
+    \clearpage
+
+
+
+
 
 \section{運用保守設計}
+上記の非機能要件より，
+本システムはAWSで構築することを前提とする．
+したがって，24時間365日という時間は
+オンライン/バッチを含みシステムが稼働している時間として定義する．\par
+本アプリに関しての運用・保守について以下に記述する．\par
+
+\subsection{運用}
+運用事項について以下の項目を行う．\par
+\begin{itemize}
+  \item システム稼働状態や不具合がないかなどの監視
+  \item データのバックアップ
+  \item 外部からの攻撃や情報流出などの監視
+  \item システム障害復旧からの再起動
+  \item 問い合わせへの対応
+\end{itemize}\par
+データへのアクセス権限または，個人情報へのアクセスは，
+弊社役員6名のみ可能とする．
+問い合わせへの対応として，
+その内容への返信は，
+問い合わせが送信されてから1週間以内とする．\par
+　　\par
+
+
+\subsection{保守}
+保守事項については以下の項目とする．\par
+\begin{itemize}
+  \item ネットワークなどのインフラのメンテナンス
+  \item バグや不具合の原因究明
+  \item システムのアップデート
+  \item 修正ログのバックアップ
+\end{itemize}\par
+上記の項目により，安全なシステム維持を目的とする．
+バグや不具合の原因究明には，
+重要性に応じてメンテナンス時間を設ける場合がある．\par
+
+
+
+
+\clearpage
 
 \section{データベース設計}
 
 \section{ネットワーク設計}
-サーバコンピュータとして、Amazon Web Servicesを用いる。以下に使用するサービスを記述する。
+サーバコンピュータとして，
+Amazon Web Servicesを用いる．
+以下に使用するサービスを記述する．\par
 \begin{table}[H]
   \centering
   \caption{使用するサービス}
@@ -81,7 +1400,7 @@
     Amazon Route 53                  & ドメイン名の取得      \\ \hline
   \end{tabular}
 \end{table}
-また、使用するソフトウェアやフレームワークを以下に記述する。
+また，使用するソフトウェアやフレームワークを以下に記述する．
 \begin{table}[H]
   \centering
   \caption{使用するソフトウェア・フレームワーク}
@@ -95,10 +1414,17 @@
   \end{tabular}
 \end{table}
 
-図\ref{fig:network-design}は、本アプリにおけるネットワークの構成を示している。
-ユーザーは、Flutterで実装されたフロントエンドから、FastAPIで実装されたバックエンドに対して、HTTPリクエストを送信する。
-バックエンドは、Amazon Elastic Container Service上で動作するDockerコンテナである。
-バックエンドは、Amazon RDS上に保存されたデータベースに対して、SQLクエリを送信する。
+図\ref{fig:network-design}は，
+本アプリにおけるネットワークの構成を示している．
+ユーザーは，
+Flutterで実装されたフロントエンドから，
+FastAPIで実装されたバックエンドに対して，
+HTTPリクエストを送信する．
+バックエンドは，
+Amazon Elastic Container Service上で動作するDockerコンテナである．
+バックエンドは，
+Amazon RDS上に保存されたデータベースに対して，
+SQLクエリを送信する．\par
 
 \begin{figure}[H]
   \centering
@@ -108,27 +1434,42 @@
 \end{figure}
 \section{セキュリティ対策}
 \subsection{ユーザー認証}
-ユーザー登録の際、メールで認証用のURLを送信する。
-そのURLをクリックすることで、ユーザー登録が完了する。
-この手続きにより、ユーザーが本人であることを確認し、スパム登録を防ぐ。
+ユーザー登録の際，メールで認証用のURLを送信する．
+そのURLをクリックすることで，ユーザー登録が完了する．
+この手続きにより，ユーザーが本人であることを確認し，スパム登録を防ぐ．
 \subsection{パスワードのハッシュ化}
-パスワードは、ハッシュ化して保存する。
-ハッシュ化することで、データベースの管理者であっても、パスワードを閲覧することができない。
+パスワードは，ハッシュ化して保存する．
+ハッシュ化することでデータベースの管理者であっても，
+パスワードを閲覧することができない．\par
 \subsection{SQLインジェクション}
-SQLインジェクションを防ぐために、SQLクエリを直接記述するのではなく、ORMを用いてSQLクエリを生成する。
+SQLインジェクションを防ぐために，
+SQLクエリを直接記述するのではなく，
+ORMを用いてSQLクエリを生成する．\par
 \subsection{SSL通信}
-SSL通信を用いることで、ユーザーが本アプリケーションにアクセスする際の通信を暗号化することができる。
+SSL通信を用いることで，
+ユーザーが本アプリケーションにアクセス
+する際の通信を暗号化することができる．\par
 \section{障害対策}
 \subsection{ハードウェア障害}
-AWS上にバックエンドを構築することで、AWSの障害以外では、ハードウェア障害が発生することはない。
-データベースのバックアップは、Amazon S3を用いて行う。バックアップウィンドウは、深夜0時から0時30分までとし、バックアップデータは10日間保持する。
+AWS上にバックエンドを構築することで，
+AWSの障害以外では，
+ハードウェア障害が発生することはない．
+データベースのバックアップは，
+Amazon S3を用いて行う．
+バックアップウィンドウは，
+深夜0時から0時30分までとし，
+バックアップデータは10日間保持する．\par
 \subsection{ソフトウェア障害}
-バックエンドは、Amazon Elastic Container Service上で動作するDockerコンテナである。
-バックエンドのソフトウェア障害は、Dockerコンテナの再起動によって解決する。
-復旧のために停止が許容される時間は、5分とする。
-「落ちない」ではなく、「素早く復旧」を目標とする。
+バックエンドは，
+Amazon Elastic Container Service上で
+動作するDockerコンテナである．
+バックエンドのソフトウェア障害は，
+Dockerコンテナの再起動によって解決する．
+復旧のために停止が許容される時間は，5分とする．
+「落ちない」ではなく，「素早く復旧」を目標とする．\par
 \subsection{アプリケーション開発及び、テストの障害対策}
-開発者各々の環境に影響されない開発を行うためにDockerを採用した。
-また、テストの際には、GitHub Actionsを用いて、自動テストを行う。
+開発者各々の環境に影響されない開発を行うためにDockerを採用した．
+また，テストの際には，GitHub Actionsを用いて、自動テストを行う．
+
 
 \end{document}
