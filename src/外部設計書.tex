@@ -1361,12 +1361,11 @@ Amazon Web Servicesを用いる．
   \caption{使用するサービス}
   \label{tab:services}
   \begin{tabular}{|c|c|} \hline
-    サービス名                            & 用途            \\ \hline \hline
-    Amazon Elastic Container Service & コンテナの実行環境     \\ \hline
-    Amazon App Runner                & デプロイ          \\ \hline
-    Amazon RDS                       & データベース        \\ \hline
-    Amazon S3                        & データベースのバックアップ \\ \hline
-    Amazon Route 53                  & ドメイン名の取得      \\ \hline
+    サービス名                        & 用途            \\ \hline \hline
+    Amazon Elastic Compute Cloud & コンテナの実行環境     \\ \hline
+    Amazon RDS                   & データベース        \\ \hline
+    Amazon S3                    & データベースのバックアップ \\ \hline
+    Amazon Route 53              & ドメイン名の取得      \\ \hline
   \end{tabular}
 \end{table}
 また，使用するソフトウェアやフレームワークを以下に記述する．
@@ -1386,14 +1385,12 @@ Amazon Web Servicesを用いる．
 図\ref{fig:network-design}は，
 本アプリにおけるネットワークの構成を示している．
 ユーザーは，
-Flutterで実装されたフロントエンドから，
-FastAPIで実装されたバックエンドに対して，
-HTTPリクエストを送信する．
+Flutterで実装されたフロントエンドから,
+FastAPIで実装されたバックエンドに対して,
+HTTPリクエストを送信する.
 バックエンドは，
-Amazon Elastic Container Service上で動作するDockerコンテナである．
-バックエンドは，
-Amazon RDS上に保存されたデータベースに対して，
-SQLクエリを送信する．\par
+Amazon RDS上に保存されたデータベースに対して,
+SQLクエリを送信する.\par
 
 \begin{figure}[H]
   \centering
