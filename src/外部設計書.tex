@@ -146,7 +146,7 @@
         \end{figure}
         \clearpage
 
-        \item \textbf{通知}\par
+  \item \textbf{通知}\par
         お気に入り登録したイベント・行事，求人の開催日程などが
         近づいたことの通知や，求人応募した際の完了通知などを確認することが可能．
         画面に表示される通知を選択すると，その選択した通知の詳細情報をみることが可能．\par
@@ -691,7 +691,7 @@
           \end{minipage}
           \begin{minipage}[b]{0.54\linewidth}
             \centering
-            \includegraphics[keepaspectratio, scale=0.36]{./images/external-design/general_mypage/withdrawal_inf.png}
+            % \includegraphics[keepaspectratio, scale=0.36]{./images/external-design/general_mypage/withdrawal_inf.png}
             \caption{退会確認画面}
             \label{png:withC}
           \end{minipage}
@@ -771,7 +771,7 @@
         閲覧履歴を削除する際に，表示される確認画面である．\par
         \begin{figure}[H]
           \centering
-          \includegraphics[width=9cm]{./images/external-design/general_event/history_de.png}
+          % \includegraphics[width=9cm]{./images/external-design/general_event/history_de.png}
           \caption{閲覧履歴削除画面}
 
         \end{figure}
@@ -827,7 +827,7 @@
         求人応募履歴を削除する際に表示される確認画面である．\par
         \begin{figure}[H]
           \centering
-          \includegraphics[width=9cm]{./images/external-design/general_home/apply_his_de.png}
+          % \includegraphics[width=9cm]{./images/external-design/general_home/apply_his_de.png}
           \caption{求人応募履歴削除画面}
 
         \end{figure}
@@ -993,7 +993,7 @@
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
-            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_mypage/pass_fin.png}
+            % \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_mypage/pass_fin.png}
             \caption{送信完了画面}
             \label{png:cpassM}
           \end{minipage}
@@ -1142,7 +1142,7 @@
         閲覧履歴を削除する際に，表示される確認画面である．\par
         \begin{figure}[H]
           \centering
-          \includegraphics[width=9cm]{./images/external-design/com_share/history_de.png}
+          % \includegraphics[width=9cm]{./images/external-design/com_share/history_de.png}
           \caption{閲覧履歴削除画面}
 
         \end{figure}
@@ -1420,11 +1420,18 @@ Dockerコンテナの再起動によって解決する．
 
 \section{データベース設計}
 以下に、本アプリケーションにおけるデータベース設計を示す．
+なお,都合上Userテーブルへの接続について分割を行っている.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=15cm]{./images/external-design/ER-fig.pdf}
-  \caption{ER図}
-  \label{fig:ER}
+  \includegraphics[width=15cm]{./images/external-design/ER-1.pdf}
+  \caption{ER図(1)}
+  \label{fig:ER1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/external-design/ER-2.pdf}
+  \caption{ER図(2)}
+  \label{fig:ER2}
 \end{figure}
 \section{ネットワーク設計}
 サーバコンピュータとして，
