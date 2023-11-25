@@ -1068,7 +1068,7 @@
         閲覧履歴を削除する際に，表示される確認画面である．\par
         \begin{figure}[H]
           \centering
-          \includegraphics[width=9cm]{./images/external-design/com_share/history_de.png}
+          % \includegraphics[width=9cm]{./images/external-design/com_share/history_de.png}
           \caption{閲覧履歴削除画面}
 
         \end{figure}
@@ -1346,11 +1346,18 @@ Dockerコンテナの再起動によって解決する．
 
 \section{データベース設計}
 以下に、本アプリケーションにおけるデータベース設計を示す．
+なお,都合上Userテーブルへの接続について分割を行っている.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=15cm]{./images/external-design/ER-fig.pdf}
-  \caption{ER図}
-  \label{fig:ER}
+  \includegraphics[width=15cm]{./images/external-design/ER-1.pdf}
+  \caption{ER図(1)}
+  \label{fig:ER1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/external-design/ER-2.pdf}
+  \caption{ER図(2)}
+  \label{fig:ER2}
 \end{figure}
 \section{ネットワーク設計}
 サーバコンピュータとして，
