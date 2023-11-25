@@ -48,7 +48,7 @@
 
 
 \section{システム概要}
-本アプリケーションREELは，
+本アプリケーションREELは,
 イベント主催者や地域の法人などがイベント告知や，
 求人の掲載をスマートフォン上で行うことができる
 アプリケーションである．
@@ -66,442 +66,368 @@
 \section{機能設計}
 本アプリの一般利用者，法人利用者の各機能設計について記述する．\par
 
+\subsection{共通機能}
+本アプリの一般利用者と法人利用者の共通機能設計を以降に記述する．
+\subsubsection*{新規会員登録}
+一般利用者が情報を入力し，
+その情報に不備がなく，
+利用規約に同意し，
+送信されたメールで本人確認を行うことで，
+新規会員登録ができる機能である．
+入力情報はユーザ名・メールアドレス
+・生年月日・性別・パスワード・パスワード（確認）である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/signup.png}
+  \caption{新規会員登録機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{ログイン}
+アプリ起動時に会員登録済みの利用者が，
+自身のログイン情報を入力することで，
+アプリのサービスを
+利用することができるようにする機能である．
+このとき，前回のセッション情報が残っている(ログアウト状態ではない)場合，
+ログイン情報を入力せずに，
+ログインを行った状態にする．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/login.png}
+  \caption{ログイン機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{ログアウト}
+ログアウトを選択することで，
+ログイン前の状態に戻す機能であり，
+ログアウト時にセッション情報を削除するため，
+次回アプリ起動時にはログイン画面が表示される．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/logout.png}
+  \caption{ログアウト機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{退会}
+会員が本アプリのサービスから退会することができる機能である．
+「退会」選択時，確認画面が表示され
+確認をシステムが受理した場合，システムが
+対象会員のデータベースとセッション情報の削除を行う．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/quit.png}
+  \caption{退会機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{パスワード再発行}
+ログイン画面でパスワードを忘れた際に，
+パスワードの再発行ができる機能である．
+パスワード再発行には，
+登録したユーザ名とメールアドレスを入力する必要がある．
+送信されたメールに添付されるURLからパスワードの変更が可能.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/password.png}
+  \caption{パスワード再発行機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{会員情報確認・変更}
+会員がアプリ内のマイページから自信の情報を確認または，
+変更ができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/inf.png}
+  \caption{会員情報確認・変更機能}
+
+\end{figure}
+\clearpage
+
+\subsubsection*{求人情報}
+本アプリに掲載されている求人情報を確認することができる機能である．
+ホーム画面(UI設計:4.0.1 一般利用者$-$図\ref{png:home})下側の左から三番目のアイコンを押すことで，
+表示することが可能．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/job.png}
+  \caption{求人情報機能}
+
+\end{figure}
+\clearpage
+
+\subsubsection*{イベント情報}
+本アプリに掲載されているイベント情報を確認することができる機能である．
+ホーム画面(UI設計:4.0.1 一般利用者$-$図\ref{png:home})下側の左から二番目のアイコンを押すことで，
+表示することが可能．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/event.png}
+  \caption{イベント情報機能}
+
+\end{figure}
+\clearpage
+
+\subsubsection*{表示順変更機能}
+掲載情報の表示順をお気に入り数などに変更することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/sort.png}
+  \caption{表示順変更機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{タグ分け機能}
+検索結果画面，求人画面，イベント画面から，
+タグを選択することによって，
+システムがタグ情報を検索，結果を表示する機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/tag.png}
+  \caption{タグ分け機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{検索機能}
+会員が検索バーを用いて，
+イベントまたは求人を検索することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/search.png}
+  \caption{検索機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{閲覧履歴}
+イベント，求人の詳細情報を閲覧履歴を表示させる機能である．
+イベント，求人は別々に表示される．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/history.png}
+  \caption{閲覧履歴機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{問い合わせ機能}
+会員が本アプリ提供者(株式会社ChaO!)へ問い合わせすることができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/ask.png}
+  \caption{問い合わせ機能}
+
+\end{figure}
+\clearpage
+\subsubsection*{通知機能}
+法人,一般利用者それぞれで受け取る通知の内容などは異なってくるが,
+画面に表示される通知を選択すると，その選択した通知の詳細情報をみることが可能．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/notice.png}
+  \caption{通知機能}
+
+\end{figure}
+\clearpage
 
 \subsection{一般利用者}
 本アプリの一般利用者向け機能設計を以降に記述する．\par
+\subsubsection*{お気に入り（登録）}
+掲載情報にお気に入り登録をすることができる機能である．
+お気に入りに登録された情報は，
+お気に入り一覧から確認可能となり，
+開催期間間近などの関連情報通知も受け取り可能となる．
+すでにお気に入り登録済みの情報に関しては，
+リストに入れるボタンが表示されず，
+リストから外すというボタンが表示される．
+イベントと求人のお気に入りリストは別々に表示される．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/general/bookmark-c.png}
+  \caption{お気に入り登録機能}
 
-\begin{itemize}
-  \item \textbf{新規会員登録}\par
-        一般利用者が情報を入力し，
-        その情報に不備がなく，
-        利用規約に同意し，
-        送信されたメールで本人確認を行うことで，
-        新規会員登録ができる機能である．
-        入力情報はユーザ名・メールアドレス
-        ・生年月日・性別・パスワード・パスワード（確認）である．\par
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/NewMemberRegistration.jpg}
-          \caption{新規会員登録機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{ログイン}\par
-        アプリ起動時に会員登録済みの利用者が，
-        自身のログイン情報を入力することで，
-        アプリのサービスを
-        利用することができるようにする機能である．
-        このとき，
-        前回のセッション情報が残っている(ログアウト状態ではない)場合，
-        ログイン情報を入力せずに，
-        ログインを行った状態にする．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/login.jpg}
-          \caption{ログイン機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{ログアウト}\par
-        ログアウトを選択することで，
-        ログイン前の状態に戻す機能であり，
-        ログアウト時にセッション情報を削除するため，
-        次回アプリ起動時にはログイン画面が表示される．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/logout.jpg}
-          \caption{ログアウト機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{退会}\par
-        会員が本アプリのサービスから退会することができる機能である．
-        「退会」選択時，確認画面が表示され
-        確認をシステムが受理した場合，システムが
-        対象会員のデータベースとセッション情報の削除を行う．\par
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/withdrawal.jpg}
-          \caption{退会機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{パスワード再発行}\par
-        ログイン画面でパスワードを忘れた際に，
-        パスワードの再発行ができる機能である．
-        パスワード再発行には，
-        登録したユーザ名とメールアドレスを入力する必要がある．
-        送信されたメールに添付されるURLからパスワードの変更が可能．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/password.jpg}
-          \caption{パスワード再発行機能}
-
-        \end{figure}
-        \clearpage
-
-        \item \textbf{通知}\par
-        お気に入り登録したイベント・行事，求人の開催日程などが
-        近づいたことの通知や，求人応募した際の完了通知などを確認することが可能．
-        画面に表示される通知を選択すると，その選択した通知の詳細情報をみることが可能．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/Notice.jpg}
-          \caption{通知機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{会員情報確認・変更}\par
-        会員がアプリ内のマイページから自信の情報を確認または，
-        変更ができる機能である．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/inf.jpg}
-          \caption{会員情報確認・変更機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{求人情報}\par
-        本アプリに掲載されている求人情報を確認することができる機能である．
-        ホーム画面(UI設計：4.0.1 一般利用者$-$図\ref{png:home})下側の左から三番目のアイコンを押すことで，
-        表示することが可能．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/Recruitment.jpg}
-          \caption{求人情報機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{行事・イベント情報表示}\par
-        本アプリに掲載されているイベント・行事情報を確認することができる機能である．
-        ホーム画面(UI設計：4.0.1 一般利用者$-$図\ref{png:home})下側の左から二番目のアイコンを押すことで，
-        表示することが可能．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/event.jpg}
-          \caption{行事・イベント情報表示機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{表示順変更}\par
-        掲載情報の表示順をお気に入り数などに変更することができる機能である．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/Order.jpg}
-          \caption{表示順変更機能}
-
-        \end{figure}
-        \clearpage
-
-
-  \item \textbf{お気に入り（登録）}\par
-        掲載情報にお気に入り登録をすることができる機能である．
-        お気に入りに登録された情報は，
-        お気に入り一覧から確認可能となり，
-        開催期間間近などの関連情報通知も受け取り可能となる．
-        すでにお気に入り登録済みの情報に関しては，
-        リストに入れるボタンが表示されず，
-        リストから外すというボタンが表示される．
-        イベント・行事と求人のお気に入りリストは別々に表示される．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/BookMark.jpg}
-          \caption{お気に入り（登録）機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{お気に入り（削除）}\par
-        すでにお気に入り登録済みの情報に表示されている
-        リストから外すというボタンを押すことで，
-        お気に入りからその情報を外すことができる機能である．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/BookMark_de.jpg}
-          \caption{お気に入り（削除）機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{お気に入り（表示）}\par
-        お気に入り登録している情報を確認することができる機能である．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/BookMark_dis.jpg}
-          \caption{お気に入り（表示）機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{レビュー評価（イベント・行事）}\par
-        イベント・行事の詳細情報ページで，
-        評価(5段階)・レビュー文を記述することができる機能である．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/rev.jpg}
-          \caption{レビュー評価機能（イベント・行事）}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{タグ分け}\par
-        検索結果画面，求人画面，イベント・行事画面から，
-        タグを選択することによって，
-        システムがタグ情報を検索，結果を表示する機能である．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/tag.jpg}
-          \caption{タグ分け機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{検索}\par
-        会員が検索バーを用いて，
-        イベント・行事または求人を検索することができる機能である．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/search.jpg}
-          \caption{検索機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{閲覧履歴}\par
-        イベント・行事，求人の詳細情報を閲覧履歴を表示させる機能である．
-        イベント・行事，求人は別々に表示される．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/history.jpg}
-          \caption{閲覧履歴機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{求人応募}\par
-        一般利用者が求人詳細情報画面から求人応募をすることができる機能である．
-        応募申請を行うと，ユーザ情報がシステムにより応募した求人の掲載者(法人)
-        へ送られる．\par
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/Apply.jpg}
-          \caption{求人応募機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{問い合わせ}\par
-        会員が本アプリ提供者(株式会社ChaO!)へ問い合わせすることができる機能である．\par
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/ask.jpg}
-          \caption{問い合わせ機能}
-
-        \end{figure}
-
-
-\end{itemize}
-
-
+\end{figure}
 \clearpage
+\subsubsection*{お気に入り（削除）}
+すでにお気に入り登録済みの情報に表示されている
+リストから外すというボタンを押すことで，
+お気に入りからその情報を外すことができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/general/bookmark-d.png}
+  \caption{お気に入り削除機能}
 
+\end{figure}
+\clearpage
+\subsubsection*{お気に入り（表示）}
+お気に入り登録している情報を確認することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/general/bookmark-r.png}
+  \caption{お気に入り表示機能}
 
+\end{figure}
+\clearpage
+\subsubsection*{レビュー評価（イベント）}
+イベントの詳細情報ページで，評価(5段階)・レビュー文を記述することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/general/review-eve.png}
+  \caption{レビュー評価（イベント）機能}
 
+\end{figure}
+\clearpage
+\subsubsection*{レビュー評価（求人）}
+求人の詳細情報ページで，評価(5段階)・レビュー文を記述することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/general/review-job.png}
+  \caption{レビュー評価（求人）機能}
+\end{figure}
+\subsubsection*{求人応募}
+一般利用者が求人詳細情報画面から求人応募をすることができる機能である．
+応募申請を行うと，ユーザ情報がシステムにより応募した求人の掲載者(法人)へ送られる．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/general/job-apply.png}
+  \caption{求人応募機能}
 
+\end{figure}
+\clearpage
+\subsubsection*{求人応募確認}
+一般利用者が自身の求人応募状況を確認することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/general/job-apply-r.png}
+  \caption{求人応募確認機能}
+
+\end{figure}
+\clearpage
 
 \subsection{法人利用者}
 法人利用者の各機能設計について以降に記述する．\par
 
-\begin{itemize}
-  \item \textbf{新規会員登録}\par
-        法人利用者が情報を入力し，
-        その情報に不備がなく，
-        利用規約に同意し，
-        送信されたメールで本人確認を行うことで，
-        新規会員登録ができる機能である．
-        入力情報はユーザ名・メールアドレス
-        ・生年月日・性別・パスワード・パスワード（確認）である．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/NewMemberRegistration.jpg}
-          \caption{新規会員登録機能}
 
-        \end{figure}
-        \clearpage
+\subsubsection*{求人情報新規掲載}
+法人利用者が，求人広告掲載を行うことができる機能である．
+掲載した情報は掲載情報一覧から確認することが可能である．
+※掲載内容入力前に料金プラン選択を行う必要がある．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/job-c.png}
+  \caption{求人情報新規掲載機能}
 
-  \item \textbf{ログイン}\par
-        アプリ起動時に会員登録済みの利用者が，
-        自身のログイン情報を入力することで，
-        アプリのサービスを
-        利用することができるようにする機能である．
-        このとき，
-        前回のセッション情報が残っている(ログアウト状態ではない)場合，
-        ログイン情報を入力せずに，
-        ログインを行った状態にする．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/login.jpg}
-          \caption{ログイン機能}
+\end{figure}
+\clearpage
+\subsubsection*{求人情報変更}
+法人利用者が自信の掲載情報を変更することができる機能である．\par
+※料金プランの変更は不可能．また，掲載期間内のみ変更可能である．\par
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/job-u.png}
+  \caption{求人情報変更機能}
+\end{figure}
+\clearpage
+\subsubsection*{求人情報削除}
+法人利用者が自信の掲載を削除(取り下げ)することができる機能である．
+掲載期間外の場合であっても削除可能である(2年経過した掲載情報は自動的に削除される)．\par
+※掲載期間内に削除した場合であっても，残りの期間分の返金は不可能とする．\par
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/job-d.png}
+  \caption{求人情報削除機能}
 
-        \end{figure}
-        \clearpage
+\end{figure}
+\clearpage
+\subsubsection*{イベント情報新規掲載}
+法人利用者が，
+イベント広告掲載を行うことができる機能である．
+掲載した情報は掲載情報一覧から確認することが可能である．\par
+※掲載内容入力前に料金プランの確認をする必要がある．\par
 
-  \item \textbf{ログアウト}\par
-        ログアウトを選択することで，
-        ログイン前の状態に戻す機能であり，
-        ログアウト時にセッション情報を削除するため，
-        次回アプリ起動時にはログイン画面が表示される．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/logout.jpg}
-          \caption{ログアウト機能}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/event-c.png}
+  \caption{イベント情報新規掲載機能}
 
-        \end{figure}
-        \clearpage
+\end{figure}
+\clearpage
+\subsubsection*{イベント情報変更}
+法人利用者が自信の掲載情報を変更することができる機能である．\par
+※掲載期間内のみ変更可能である．\par
 
-  \item \textbf{退会}\par
-        会員が本アプリのサービスから退会することができる機能である．
-        「退会」選択時，確認画面が表示され
-        確認をシステムが受理した場合，システムが
-        対象会員のデータベースとセッション情報の削除を行う．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/withdrawal.jpg}
-          \caption{退会機能}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/event-u.png}
+  \caption{イベント情報変更機能}
 
-        \end{figure}
-        \clearpage
+\end{figure}
+\clearpage
+\subsubsection*{イベント情報削除}
+法人利用者が自信の掲載を削除(取り下げ)することができる機能である．
+掲載期間外の場合であっても削除可能である(2年経過した掲載情報は自動的に削除される)．\par
+※掲載期間内に削除した場合であっても，残りの期間分の返金は不可能とする．\par
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/event-d.png}
+  \caption{イベント情報削除機能}
 
-  \item \textbf{パスワード再発行}\par
-        ログイン画面でパスワードを忘れた際に，
-        パスワードの再発行ができる機能である．
-        パスワード再発行には，
-        登録したユーザ名とメールアドレスを入力する必要がある．
-        送信されたメールに添付されるURLからパスワードの変更が可能．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/password.jpg}
-          \caption{パスワード再発行機能}
+\end{figure}
 
-        \end{figure}
-        \clearpage
+\clearpage
+\subsubsection*{インプレッション取得機能}
+法人利用者が自身の掲載情報のインプレッション数を確認することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/impression.png}
+  \caption{インプレッション取得機能}
 
-  \item \textbf{会員情報確認・変更}\par
-        会員がアプリ内のマイページから自信の情報を確認または，
-        変更ができる機能である．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/general/inf.jpg}
-          \caption{会員情報確認・変更機能}
+\end{figure}
+\clearpage
+\subsubsection*{応募者情報確認機能}
+法人利用者が自身の掲載情報に対して応募した一般利用者の情報を確認することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/applicant.png}
+  \caption{応募者情報確認機能}
 
-        \end{figure}
-        \clearpage
+\end{figure}
+\clearpage
+\subsubsection*{応募者確定機能}
+法人利用者が自身の掲載情報に対して応募した一般利用者の中から採用する人を確定することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/apply.png}
+  \caption{応募者確定機能}
 
-  \item \textbf{求人情報新規掲載}\par
-        法人利用者が，
-        求人広告掲載を行うことができる機能である．
-        掲載した情報は掲載情報一覧から確認することが可能である．\par
-        ※掲載内容入力前に料金プラン選択を行う必要がある．\par
+\end{figure}
+\clearpage
+\subsubsection*{支払金額確認機能}
+法人利用者がイベント情報や求人情報の掲載に対して支払う金額を確認することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/payment.png}
+  \caption{支払金額確認機能}
 
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/company/publish_kyu.jpg}
-          \caption{求人情報新規掲載機能}
+\end{figure}
+\clearpage
+\subsubsection*{振込口座確認機能}
+法人利用者が振込口座情報を確認することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/bank.png}
+  \caption{振込口座確認機能}
 
-        \end{figure}
-        \clearpage
+\end{figure}
+\clearpage
+\subsubsection*{未払い投稿一覧機能}
+法人利用者が未払いの投稿一覧を確認することができる機能である．
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/company/unpaid.png}
+  \caption{未払い投稿一覧機能}
 
-  \item \textbf{求人情報変更}\par
-        法人利用者が自信の掲載情報を変更することができる機能である．\par
-        ※料金プランの変更は不可能．また，掲載期間内のみ変更可能である．\par
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/company/publish_kyu_he.jpg}
-          \caption{求人情報変更機能}
-
-        \end{figure}
-        \clearpage
-
-
-  \item \textbf{求人情報削除}\par
-        法人利用者が自信の掲載を削除(取り下げ)することができる機能である．
-        掲載期間外の場合であっても削除可能である(2年経過した掲載情報は自動的に削除される)．\par
-        ※掲載期間内に削除した場合であっても，残りの期間分の返金は不可能とする．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/company/publish_kyu_de.jpg}
-          \caption{求人情報削除機能}
-
-        \end{figure}
-        \clearpage
-
-
-  \item \textbf{イベント・行事情報新規掲載}\par
-        法人利用者が，
-        イベント・行事広告掲載を行うことができる機能である．
-        掲載した情報は掲載情報一覧から確認することが可能である．\par
-        ※掲載内容入力前に料金プランの確認をする必要がある．\par
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/company/publish_eve.jpg}
-          \caption{イベント・行事情報新規掲載機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{イベント・行事情報変更}\par
-        法人利用者が自信の掲載情報を変更することができる機能である．\par
-        ※掲載期間内のみ変更可能である．\par
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/company/publish_eve_he.jpg}
-          \caption{イベント・行事情報変更機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{イベント・行事情報削除}\par
-        法人利用者が自信の掲載を削除(取り下げ)することができる機能である．
-        掲載期間外の場合であっても削除可能である(2年経過した掲載情報は自動的に削除される)．\par
-        ※掲載期間内に削除した場合であっても，残りの期間分の返金は不可能とする．\par
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/company/publish_eve_de.jpg}
-          \caption{イベント・行事情報削除機能}
-
-        \end{figure}
-        \clearpage
-
-  \item \textbf{問い合わせ}\par
-        会員が本アプリ提供者(株式会社ChaO!)へ問い合わせすることができる機能である．\par
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=15cm]{./diagrams/company/ask.jpg}
-          \caption{問い合わせ機能}
-
-        \end{figure}
-
-
-\end{itemize}
-
-
-
+\end{figure}
 \clearpage
 \section{UI設計}
 
@@ -710,13 +636,13 @@
 
         \clearpage
 
-  \item \textbf{イベント・行事表示画面/求人表示画面}\par
-        イベント・行事一覧，求人一覧ページを表示させた際の画面である．\par
+  \item \textbf{イベント表示画面/求人表示画面}\par
+        イベント一覧，求人一覧ページを表示させた際の画面である．\par
         \begin{figure}[H]
           \begin{minipage}[b]{0.45\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_event/eve_ad.png}
-            \caption{イベント・行事表示画面}
+            \caption{イベント表示画面}
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
@@ -726,14 +652,14 @@
         \end{figure}
         \clearpage
 
-  \item \textbf{お気に入り一覧（イベント・行事/求人）画面}\par
-        イベント・行事，求人情報で，
+  \item \textbf{お気に入り一覧（イベント/求人）画面}\par
+        イベント，求人情報で，
         お気に入り登録した項目の一覧を表示させる画面である．\par
         \begin{figure}[H]
           \begin{minipage}[b]{0.45\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_event/eve_bm.png}
-            \caption{お気に入り一覧（イベント・行事）画面}
+            \caption{お気に入り一覧（イベント）画面}
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
@@ -743,14 +669,14 @@
         \end{figure}
         \clearpage
 
-  \item \textbf{閲覧履歴（イベント・行事/求人）}\par
-        イベント・行事，求人情報で，
+  \item \textbf{閲覧履歴（イベント/求人）}\par
+        イベント，求人情報で，
         詳細情報を閲覧した項目の一覧が表示される画面である．\par
         \begin{figure}[H]
           \begin{minipage}[b]{0.45\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_event/eve_history.png}
-            \caption{閲覧履歴（イベント・行事）画面}
+            \caption{閲覧履歴（イベント）画面}
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
@@ -764,25 +690,25 @@
         閲覧履歴を削除する際に，表示される確認画面である．\par
         \begin{figure}[H]
           \centering
-          \includegraphics[width=9cm]{./images/external-design/general_event/history_de.png}
+          % \includegraphics[width=9cm]{./images/external-design/general_event/history_de.png}
           \caption{閲覧履歴削除画面}
 
         \end{figure}
         \clearpage
 
-  \item \textbf{イベント・行事詳細画面}\par
-        イベント・行事一覧画面から任意の項目を選ぶことで表示される，
+  \item \textbf{イベント詳細画面}\par
+        イベント一覧画面から任意の項目を選ぶことで表示される，
         その選択した項目の詳細情報画面である．\par
         \begin{figure}[H]
           \begin{minipage}[b]{0.45\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_event/eve_inf1.png}
-            \caption{イベント・行事詳細画面}
+            \caption{イベント詳細画面}
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_event/eve_inf2.png}
-            \caption{イベント・行事詳細全体画面}
+            \caption{イベント詳細全体画面}
           \end{minipage}
         \end{figure}
         \clearpage
@@ -820,7 +746,7 @@
         求人応募履歴を削除する際に表示される確認画面である．\par
         \begin{figure}[H]
           \centering
-          \includegraphics[width=9cm]{./images/external-design/general_home/apply_his_de.png}
+          % \includegraphics[width=9cm]{./images/external-design/general_home/apply_his_de.png}
           \caption{求人応募履歴削除画面}
 
         \end{figure}
@@ -986,7 +912,7 @@
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
-            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_mypage/pass_fin.png}
+            % \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_mypage/pass_fin.png}
             \caption{送信完了画面}
             \label{png:cpassM}
           \end{minipage}
@@ -1097,14 +1023,14 @@
 
 
 
-  \item \textbf{お気に入り一覧（イベント・行事/求人）画面}\par
-        イベント・行事，求人情報で，
+  \item \textbf{お気に入り一覧（イベント/求人）画面}\par
+        イベント，求人情報で，
         お気に入り登録した項目の一覧を表示させる画面である．\par
         \begin{figure}[H]
           \begin{minipage}[b]{0.45\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_eve/eve_bm.png}
-            \caption{お気に入り一覧（イベント・行事）画面}
+            \caption{お気に入り一覧（イベント）画面}
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
@@ -1114,14 +1040,14 @@
         \end{figure}
         \clearpage
 
-  \item \textbf{閲覧履歴（イベント・行事/求人）}\par
-        イベント・行事，求人情報で，
+  \item \textbf{閲覧履歴（イベント/求人）}\par
+        イベント，求人情報で，
         詳細情報を閲覧した項目の一覧が表示される画面である．\par
         \begin{figure}[H]
           \begin{minipage}[b]{0.45\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_eve/eve_history.png}
-            \caption{閲覧履歴（イベント・行事）画面}
+            \caption{閲覧履歴（イベント）画面}
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
@@ -1135,19 +1061,19 @@
         閲覧履歴を削除する際に，表示される確認画面である．\par
         \begin{figure}[H]
           \centering
-          \includegraphics[width=9cm]{./images/external-design/com_share/history_de.png}
+          % \includegraphics[width=9cm]{./images/external-design/com_share/history_de.png}
           \caption{閲覧履歴削除画面}
 
         \end{figure}
         \clearpage
 
-  \item \textbf{イベント・行事詳細画面}\par
-        イベント・行事一覧画面から任意の項目を選ぶことで表示される，
+  \item \textbf{イベント詳細画面}\par
+        イベント一覧画面から任意の項目を選ぶことで表示される，
         その選択した項目の詳細情報画面である．\par
         \begin{figure}[H]
           \centering
           \includegraphics[width=9cm]{./images/external-design/com_eve/eve_inf.png}
-          \caption{イベント・行事詳細画面画面}
+          \caption{イベント詳細画面画面}
 
         \end{figure}
         \clearpage
@@ -1163,30 +1089,30 @@
         \end{figure}
         \clearpage
 
-  \item \textbf{イベント・行事掲載料金プラン画面}\par
+  \item \textbf{イベント掲載料金プラン画面}\par
         掲載ページ作成時（作成ページ移行前）に表示される画面であり，
-        イベント・行事掲載料金プラン確認画面となっている．\par
+        イベント掲載料金プラン確認画面となっている．\par
         \begin{figure}[H]
           \centering
           \includegraphics[width=9cm]{./images/external-design/com_mypage/eve_pub_plan.png}
-          \caption{イベント・行事掲載料金プラン画面}
+          \caption{イベント掲載料金プラン画面}
 
         \end{figure}
         \clearpage
 
-  \item \textbf{イベント・行事掲載ページ作成画面}\par
-        イベント・行事を掲載する際に，
+  \item \textbf{イベント掲載ページ作成画面}\par
+        イベントを掲載する際に，
         その内容を記述する画面である．\par
         \begin{figure}[H]
           \begin{minipage}[b]{0.45\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_eve/eve_pub_create.png}
-            \caption{イベント・行事掲載ページ作成画面}
+            \caption{イベント掲載ページ作成画面}
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.36]{./images/external-design/com_eve/eve_pub_create_sc.png}
-            \caption{イベント・行事掲載ページ作成全体画面}
+            \caption{イベント掲載ページ作成全体画面}
           \end{minipage}
         \end{figure}
         \clearpage
@@ -1287,13 +1213,13 @@
         \end{figure}
         \clearpage
 
-  \item \textbf{投稿広告一覧（イベント・行事/求人）画面}\par
+  \item \textbf{投稿広告一覧（イベント/求人）画面}\par
         すでに投稿済みの広告一覧を表示する画面である．\par
         \begin{figure}[H]
           \begin{minipage}[b]{0.45\linewidth}
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_eve/eve_list.png}
-            \caption{投稿広告一覧（イベント・行事）画面}
+            \caption{投稿広告一覧（イベント）画面}
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
@@ -1413,11 +1339,18 @@ Dockerコンテナの再起動によって解決する．
 
 \section{データベース設計}
 以下に、本アプリケーションにおけるデータベース設計を示す．
+なお,都合上Userテーブルへの接続について分割を行っている.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=15cm]{./images/external-design/ER-fig.pdf}
-  \caption{ER図}
-  \label{fig:ER}
+  \includegraphics[width=15cm]{./images/external-design/ER-1.pdf}
+  \caption{ER図(1)}
+  \label{fig:ER1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/external-design/ER-2.pdf}
+  \caption{ER図(2)}
+  \label{fig:ER2}
 \end{figure}
 \section{ネットワーク設計}
 サーバコンピュータとして，
