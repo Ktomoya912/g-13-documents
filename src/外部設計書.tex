@@ -164,6 +164,37 @@
 
 \end{figure}
 \clearpage
+
+
+\subsubsection*{ホーム}
+会員が本アプリ使用時，ログイン状態であればホーム画面を表示する機能である．
+このホームから各画面へ移動できる．
+また，画面下側に表示されるアイコンを選択した場合でもこのホーム
+へ移ることが可能．\par
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/home.png}
+  \caption{ホーム機能}
+
+\end{figure}
+\clearpage
+
+\subsubsection*{マイページ}
+ユーザ情報を取得し，そのユーザが会員情報の確認や，ログアウト，退会などが
+行える画面を表示させる機能である．\par
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./diagrams/common/mypage.png}
+  \caption{マイページ機能}
+
+\end{figure}
+\clearpage
+
+
+
+
+
+
 \subsubsection*{会員情報確認・変更}
 会員がアプリ内のマイページから自信の情報を確認または，
 変更ができる機能である．
@@ -259,8 +290,6 @@
 \end{figure}
 \clearpage
 
-\subsection{一般利用者}
-本アプリの一般利用者向け機能設計を以降に記述する．\par
 \subsubsection*{お気に入り（登録）}
 掲載情報にお気に入り登録をすることができる機能である．
 お気に入りに登録された情報は，
@@ -297,6 +326,10 @@
 
 \end{figure}
 \clearpage
+
+\subsection{一般利用者}
+本アプリの一般利用者向け機能設計を以降に記述する．\par
+
 \subsubsection*{レビュー評価（イベント）}
 イベントの詳細情報ページで，評価(5段階)・レビュー文を記述することができる機能である．
 \begin{figure}[H]
@@ -558,6 +591,7 @@
         \end{figure}\par
 
         \clearpage
+        
 
 
   
@@ -579,6 +613,37 @@
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general/pass_fin.png}
             \caption{送信完了画面}
             \label{png:passM}
+          \end{minipage}
+        \end{figure}
+        \clearpage
+
+
+        \item \textbf{ホーム画面}\par
+        会員が本アプリ使用時，ログイン状態であれば
+        表示される画面である．
+        画面下側左一列目のアイコンを選択することで，
+        いつでもこの画面に戻ることが可能である．\par
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=9cm]{./images/external-design/general_home/home.png}
+          \caption{ホーム画面}
+
+        \end{figure}
+        \clearpage
+
+        \item \textbf{マイページ画面}\par
+        自身の会員情報の確認や，
+        ログアウト，退会などが行える画面である．\par
+        \begin{figure}[H]
+          \begin{minipage}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_mypage/mypage.png}
+            \caption{マイページ画面}
+          \end{minipage}
+          \begin{minipage}[b]{0.6\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_mypage/mypage_inf.png}
+            \caption{マイページ全体画面}
           \end{minipage}
         \end{figure}
         \clearpage
@@ -658,6 +723,19 @@
         \clearpage
 
 
+        \item \textbf{検索結果画面}\par
+        この画面はホーム画面または，イベント，求人一覧画面に表示されている，
+        検索バーにキーワードを入力し，
+        検索を行った際に表示される結果画面である．\par
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=9cm]{./images/external-design/general_event/search.png}
+          \caption{検索結果画面}
+
+        \end{figure}
+        \clearpage
+
+
         \item \textbf{閲覧履歴（イベント/求人）}\par
         イベント，求人情報で，
         詳細情報を閲覧した項目の一覧が表示される画面である．\par
@@ -731,6 +809,27 @@
             \centering
             \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_recruit/rec_bookmark.png}
             \caption{お気に入り一覧（求人）画面}
+          \end{minipage}
+        \end{figure}
+        \clearpage
+
+
+        \item \textbf{求人応募確認/完了画面}\par
+        図\ref{png:gap}求人詳細情報から応募するを選択した際に表示される
+        確認画面である．この画面で「応募する」を選択すれば，
+        図\ref{png:gapFin}の応募完了画面が表示される．\par
+        \begin{figure}[H]
+          \begin{minipage}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_recruit/rec_ad_ch.png}
+            \caption{求人応募確認画面}
+            \label{png:gap}
+          \end{minipage}
+          \begin{minipage}[b]{0.6\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/general_recruit/rec_ask_fin.png}
+            \caption{求人応募完了画面}
+            \label{png:gapFin}
           \end{minipage}
         \end{figure}
         \clearpage
@@ -909,12 +1008,45 @@
           \end{minipage}
           \begin{minipage}[b]{0.6\linewidth}
             \centering
-            % \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_mypage/pass_fin.png}
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_mypage/pas_fin.png}
             \caption{送信完了画面}
             \label{png:cpassM}
           \end{minipage}
         \end{figure}
         \clearpage
+
+        \item \textbf{ホーム画面}\par
+        会員が本アプリ使用時，ログイン状態であれば
+        表示される画面である．
+        画面下側左一列目のアイコンを選択することで，
+        いつでもこの画面に戻ることが可能である．\par
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=9cm]{./images/external-design/com_home/home.png}
+          \caption{ホーム画面}
+
+        \end{figure}
+        \clearpage
+
+        \item \textbf{マイページ画面}\par
+        自身の会員情報の確認や，
+        ログアウト，退会などが行える画面である．\par
+        \begin{figure}[H]
+          \begin{minipage}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_mypage/mypage.png}
+            \caption{マイページ画面}
+          \end{minipage}
+          \begin{minipage}[b]{0.6\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_mypage/mypage_sc.png}
+            \caption{マイページ全体画面}
+          \end{minipage}
+        \end{figure}
+        \clearpage
+
+
+
 
         \item \textbf{会員情報確認画面}\par
         会員情報確認
@@ -972,6 +1104,28 @@
           \end{minipage}
         \end{figure}
         \clearpage
+
+
+        \item \textbf{イベント/求人詳細画面}\par
+        イベント（または求人）一覧画面から任意の項目を選ぶことで表示される，
+        その選択した項目の詳細情報画面である．\par
+        \begin{figure}[H]
+          \begin{minipage}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_eve/eve_inf.png}
+            \caption{イベント詳細画面}
+          \end{minipage}
+          \begin{minipage}[b]{0.6\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_rec/rec_inf.png}
+            \caption{求人詳細画面}
+          \end{minipage}
+        \end{figure}
+        \clearpage
+
+
+
+
 
   
 
@@ -1049,27 +1203,29 @@
         \clearpage
 
 
-        % \item \textbf{お気に入り一覧（イベント/求人）画面}\par
-        % イベント，求人情報で，
-        % お気に入り登録した項目の一覧を表示させる画面である．\par
-        % \begin{figure}[H]
-        %   \begin{minipage}[b]{0.45\linewidth}
-        %     \centering
-        %     \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_eve/eve_bm.png}
-        %     \caption{お気に入り一覧（イベント）画面}
-        %   \end{minipage}
-        %   \begin{minipage}[b]{0.6\linewidth}
-        %     \centering
-        %     \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_rec/rec_bm.png}
-        %     \caption{お気に入り一覧（求人）画面}
-        %   \end{minipage}
-        % \end{figure}
-        % \clearpage
+        \item \textbf{お気に入り一覧（イベント/求人）画面}\par
+        イベント，求人情報で，
+        お気に入り登録した項目の一覧を表示させる画面である．\par
+        \begin{figure}[H]
+          \begin{minipage}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_eve/eve_bm.png}
+            \caption{お気に入り一覧（イベント）画面}
+          \end{minipage}
+          \begin{minipage}[b]{0.6\linewidth}
+            \centering
+            \includegraphics[keepaspectratio, scale=0.6]{./images/external-design/com_rec/rec_bm.png}
+            \caption{お気に入り一覧（求人）画面}
+          \end{minipage}
+        \end{figure}
+        \clearpage
 
         \item \textbf{求人広告掲載料金プラン画面}\par
         掲載ページ作成時（作成ページ移行前）に，
         求人広告掲載料金プラン選択画面（図\ref{png:fee}）が表示され，
         選択後，プラン確定画面（図\ref{png:feec}）が表示される．\par
+        また，未支払い広告一覧画面（図\ref{png:Notlist}）
+        で求人広告を選択した際にもこの画面が表示される．\par
         \begin{figure}[H]
           \begin{minipage}[b]{0.45\linewidth}
             \centering
@@ -1109,7 +1265,9 @@
 
         \item \textbf{イベント掲載料金プラン画面}\par
         掲載ページ作成時（作成ページ移行前）に表示される画面であり，
-        イベント掲載料金プラン確認画面となっている．\par
+        イベント掲載料金プラン確認画面となっている．\par]
+        また，未支払い広告一覧画面（図\ref{png:Notlist}）
+        でイベント広告を選択した際にもこの画面が表示される．\par
         \begin{figure}[H]
           \centering
           \includegraphics[width=9cm]{./images/external-design/com_mypage/eve_pub_plan.png}
@@ -1248,6 +1406,19 @@
 
         \end{figure}
         \clearpage
+
+
+  \item \textbf{未支払い広告一覧画面}\par
+        料金の支払いが完了していない作成した広告を表示する画面．
+        支払いが完了した広告はこの画面から削除される．\par
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=9cm]{./images/external-design/com_mypage/notPost_list.png}
+          \caption{未支払い広告一覧画面}
+          \label{png:Notlist}
+        \end{figure}
+        \clearpage
+
 
 
 
