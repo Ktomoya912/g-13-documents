@@ -66,6 +66,35 @@
 \section{機能設計}
 本アプリの一般利用者，法人利用者の各機能設計について記述する．\par
 
+\subsection{機能概要図}
+以下に示す図は本アプリの機能概要である．\par
+\subsubsection*{ログイン関連機能}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=17cm]{./images/external-design/login_flow.pdf}
+  \caption{ログイン関連機能概要}
+
+\end{figure}
+\clearpage
+
+\subsubsection*{一般利用者関連機能}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/external-design/general_flow.pdf}
+  \caption{一般利用者機能概要}
+
+\end{figure}\par
+　　\par
+
+\subsubsection*{法人利用者関連機能}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/external-design/com_flow.pdf}
+  \caption{法人利用者機能概要}
+
+\end{figure}
+\clearpage
+
 \subsection{共通機能}
 本アプリの一般利用者と法人利用者の共通機能設計を以降に記述する．
 \subsubsection*{新規会員登録}
@@ -284,6 +313,9 @@
   \includegraphics[width=15cm]{./diagrams/general/review-job.png}
   \caption{レビュー評価（求人）機能}
 \end{figure}
+
+
+\clearpage
 \subsubsection*{求人応募}
 一般利用者が求人詳細情報画面から求人応募をすることができる機能である．
 応募申請を行うと，ユーザ情報がシステムにより応募した求人の掲載者(法人)へ送られる．
