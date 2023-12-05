@@ -1,1 +1,51 @@
 \section{API設計}\label{sec:api}
+\subsection*{認証}
+\subsubsection*{ログイン}
+\textbf{POST} \texttt{auth/login} \\
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize} \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Request}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ    & 型      & 説明    \\ \hline \hline
+      username & string & ユーザ名  \\ \hline
+      password & string & パスワード \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ & 型      & 説明    \\ \hline \hline
+      token & string & トークン  \\ \hline
+      user  & object & ユーザ情報 \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{ログアウト}
+\textbf{POST} \texttt{auth/logout} \\
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize} \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Request}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ & 型      & 説明   \\ \hline \hline
+      token & string & トークン \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ   & 型      & 説明    \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{ユーザ登録}
