@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{booktabs} % 表の横線を調整するためのパッケージ
+\usepackage{tabularx} % 表の幅を調整するためのパッケージ
+
+\newcommand{\bettershortstack}[4][c]{%
+  \renewcommand{\arraystretch}{#2}
+  \begin{tabular}[b]{@{}#1@{}}
+  #4
+  \end{tabular}%
+  \renewcommand{\arraystretch}{#3}
+}
+%\bettershortstack[左右寄せ]{行間の指定}{下の行間}{セル内の文章}
+
+
+\begin{document}
+
+\begin{table}[htbp]
+\centering
+\caption{ログイン画面を生成するレイヤー}
+\begin{tabularx}{\linewidth}{llp{20cm}}
+    
+    \cellcolor[HTML]{C0C0C0}\textbf{レイヤー名} & \multicolumn{2}{l}{login\_page.dart} \\ 
+    \cellcolor[HTML]{C0C0C0}\textbf{レイヤー概要} & \multicolumn{2}{l}{ログイン画面を生成するレイヤー} \\
+    \cellcolor[HTML]{C0C0C0}\textbf{責任者} & \multicolumn{2}{l}{山本昇永} \\ 
+    \midrule
+    \multicolumn{1}{l}{\cellcolor[HTML]{C0C0C0}\textbf{構成要素}}       & \multicolumn{2}{l}{\cellcolor[HTML]{C0C0C0}}  \\
+& \cellcolor[HTML]{EFEFEF}\textbf{クラス名}   & \multicolumn{1}{l}{LoginPage}                \\
+    \cmidrule{2-3}
+& \cellcolor[HTML]{EFEFEF}\textbf{クラスの種類} & \multicolumn{1}{l}{extends: StatefulWidget}  \\
+& \cellcolor[HTML]{EFEFEF}\textbf{処理概要}   & \multicolumn{1}{l}{ログイン画面をWidgetを動的に変更するクラス} \\
+\cmidrule{2-3}
+& \multicolumn{2}{l}{\cellcolor[HTML]{EFEFEF}\textbf{入力}}                                \\
+& \multicolumn{2}{l}{なし}     \\
+& \multicolumn{2}{l}{\cellcolor[HTML]{EFEFEF}\textbf{出力}} \\
+& \multicolumn{2}{l}{なし} \\
+\cmidrule{2-3}
+& \multicolumn{2}{l}{\cellcolor[HTML]{EFEFEF}\textbf{他クラス・関数との関係}} \\
+& \multicolumn{2}{l}{・login\_page.dartのLoginPageStateクラスを組み込む} \\
+\cmidrule{2-3}
+& \cellcolor[HTML]{EFEFEF}\textbf{クラス名}   & \multicolumn{1}{l}{LoginPage}                \\
+    \cmidrule{2-3}
+& \cellcolor[HTML]{EFEFEF}\textbf{クラスの種類} & \multicolumn{1}{l}{extends: StatefulWidget}  \\
+& \cellcolor[HTML]{EFEFEF}\textbf{処理概要}   & \multicolumn{1}{l}{ログイン画面をWidgetを動的に変更するクラス} \\
+\cmidrule{2-3}
+& \multicolumn{2}{l}{\cellcolor[HTML]{EFEFEF}\textbf{入力}}                                \\
+& \multicolumn{2}{l}{なし}     \\
+& \multicolumn{2}{l}{\cellcolor[HTML]{EFEFEF}\textbf{出力}} \\
+& \multicolumn{2}{l}{なし} \\
+\cmidrule{2-3}
+& \multicolumn{2}{l}{\cellcolor[HTML]{EFEFEF}\textbf{他クラス・関数との関係}} \\
+& \multicolumn{2}{l}{・new\_menber\_company.dartのNewMemberGeneralクラスを} \\
+& \multicolumn{2}{l}{呼び出すことで、一般用の新規会員登録画面を表示} \\
+\bottomrule
+
+    
+\end{tabularx}
+\end{table}
+\end{document}
