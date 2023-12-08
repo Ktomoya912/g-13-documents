@@ -5,84 +5,24 @@ Dartの識別子には以下のように大きく３種類に分けることが�
 \begin{itemize}
   \item \textbf{UpperCamelCase}：名前では、各単語の最初の文字が大文字になり、最初の文字も含まれる。
   \item \textbf{lowerCamelCase}：名前では、頭文字を覗き、各単語の最初の文字を大文字にする
-  \item \textbf{lowercase\_with\_underscores}：頭字語であっても、小文字のみを使用し、単語は\_で区切る。
+  \item \textbf{snake\_case}：頭字語であっても、小文字のみを使用し、単語は\_で区切る。
 \end{itemize}
 これを元に型やファイルなどの識別子を定める。
 
-\subsubsection*{＜型にはUpperCamelCaseを用いる。＞}
+\subsubsection*{・型にはUpperCamelCaseを用いる。}
 クラス、列挙型、typedefs、型パラメータは、各単語の最初の文字を大文字にし（最初の単語を含む）、セパレータを使用しない。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|class SliderMenu {...}|\par
-    \verb|class HttpRequest {...}|\par
-    \verb|typedef Predicate<T> = bool Function(T value);|\par
-  \end{tcolorbox}
-\end{center}\par
-\ \par
 これには、メタデータ注釈で使用されることを意図したクラスも含む。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|class Foo {const Foo([Object? arg]);}|\par
-    \ \par
-    \verb|@Foo(anArg)|\par
-    \verb|class A {...}|\par
-    \ \par
-    \verb|@Foo()|\par
-    \verb|class B {...}|\par
-  \end{tcolorbox}
-\end{center}\par
-\ \par
-\clearpage
+
 アノテーションクラスのコンストラクタがパラメータを取らない場合、それ用に別のloweCamelCase定数を作成した方が良い。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|const foo = Foo();|\par
-    \ \par
-    \verb|@foo()|\par
-    \verb|class C {...}|
-  \end{tcolorbox}
-\end{center}\par
-\ \par
-\subsubsection*{＜拡張子には、UpperCamelCaseを使う。＞}
+
+\subsubsection*{・拡張子には、UpperCamelCaseを使う。}
 タイプ同様、拡張子は各単語の最初の文字を大文字に（最初の単語を含む）、セパレータを使用しない。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|extension MyFancyList<T> on List<T> {...}|\par
-    \ \par
-    \verb|extension SmartIterable<T> on Iterable<T> {...}|
-  \end{tcolorbox}
-\end{center}\par
-\ \par
 
 
 
 
 
-\subsubsection*{＜ライブラリ、パッケージ、ディレクトリ、ソースファイルにはlowercase\_with\_underscoresを使う＞}
+\subsubsection*{・ライブラリ、パッケージ、ディレクトリ、ソースファイルにはsnake\_caseを使う}
 ファイルシステムによっては大文字と小文字が区別されないため、
 多くのプロジェクトでファイル名を全て小文字にする必要がある。
 区切り文字を使用することで、
@@ -90,84 +30,20 @@ Dartの識別子には以下のように大きく３種類に分けることが�
 アンダースコア（\_）をセパレータとして使用すると、
 名前が有効なDart識別子であることが保証される。これは、
 言語が後にシンボリックインポートをサポートする場合に便利である。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|library peg_parser.source_scanner;|\par
-    \ \par
-    \verb|import 'file_system.dart';|\par
-    \ \par
-    \verb|import 'slider_menu.dart';|
-  \end{tcolorbox}
-\end{center}\par
-\ \par
-\clearpage
-\subsubsection*{＜インポートプレフィックスにはlowercase\_with\_underscoresを使う＞}
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|import 'dart:math' as math;|\par
-    \verb|import 'package:angular_components/angular_components.dart' as|\par
-    \verb|angular_components;|\par
-    \verb|import 'package:js/js.dart' as js;|
-  \end{tcolorbox}
-\end{center}\par
+
+\subsubsection*{・インポートプレフィックスにはsnake\_caseを使う}
 \ \par
 
-\subsubsection*{＜他の識別子（変数名や関数名）にはlowerCamelCaseを使う＞}
+\subsubsection*{・他の識別子（変数名や関数名）にはlowerCamelCaseを使う}
 クラスメンバー、トップレベル定義、変数、パラメータ、
 名前付きパラメータは、
 最初の単語を除く各単語の最初の文字を大文字にし、
 セパレータを使用しない。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|var count = 3;|\par
-    \ \par
-    \verb|HttpRequest httpRequest;|\par
-    \ \par
-    \verb|void align(bool clearItems) {|\par
-    \ \verb|//...|\par
-    \verb|}|
-  \end{tcolorbox}
-\end{center}\par
-\ \par
+\clearpage
 
-\subsubsection*{＜定数には、lowerCamelCaseを使う方が良い＞}
+\subsubsection*{・定数には、lowerCamelCaseを使う方が良い}
 新しいコードでは、enum値を含む定数変数にlowerCamelCaseを使用する。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|const pi = 3.14;|\par
-    \verb|const defaultTimeout = 1000;|\par
-    \verb|final urlScheme = RegExp('^([a-z]+):');|\par
-    \ \par
-    \verb|class Dice {|\par
-    \ \verb|static final numberGenerator = Random();|\par
-    \verb|}|
-  \end{tcolorbox}
-\end{center}\par
-\ \par
+
 次の場合のように、
 既存のコードとの一貫性のためにSCREAMING\_CAPSを使用できる。\par
 \begin{itemize}
@@ -179,424 +55,139 @@ Dartの識別子には以下のように大きく３種類に分けることが�
 
 
 
-\subsubsection*{＜3文字以上の頭文字と略語は1文字目を大文字にする（普通の単語のように扱う）＞}
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|class HttpConnection {}|\par
-    \verb|class DBIOPort {}|\par
-    \verb|class TVVcr {}|\par
-    \verb|class MrRogers {}|\par
-    \ \par
-    \verb|var httpRequest =...|\par
-    \verb|var uiHandler =...|\par
-    \verb|var userId = ...|\par
-    \verb|Id id;|
-  \end{tcolorbox}
-\end{center}\par
+\subsubsection*{・3文字以上の頭文字と略語は1文字目を大文字にする（普通の単語のように扱う）}
 \ \par
 
 
 
-\subsubsection*{＜未使用のコールバック引数には\ 、や\ \_\ を使用した方が良い＞}
-関数に複数の未使用のパラメータがある場合は、
-名前の衝突を避けるために追加のアンダースコア（\_）を使用する。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|futureOfVoid.then((_) {|\par
-    \ \verb|print('Operation complete.');|\par
-    \verb|});|
-  \end{tcolorbox}
-\end{center}\par
-\ \par
-
-
-
-\subsubsection*{＜プライベートではない識別子はアンダースコア（\_）から始めない＞}
-\ \par
-\subsubsection*{＜インデント＞}
+\subsubsection*{・未使用のコールバック引数には\ 、や\ \_\ を使用した方が良い}
 \begin{itemize}
-  \item 2スペース\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|someFunc(|\par
-            \verb|  color: Colors.blue,|\par
-            \verb|  fontSize: 16.0,|\par
-            \verb|);|
-          \end{tcolorbox}
-        \end{center}\par
-        \clearpage
-  \item 継続インデントは、4スペース\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|someFunc(|\par
-            \verb|    context,  value);|
-          \end{tcolorbox}
-        \end{center}\par
+  \item[-] 関数に複数の未使用のパラメータがある場合は、
+        名前の衝突を避けるために追加のアンダースコア（\_）を使用する。
+\end{itemize}
+\ \par
+
+
+\subsubsection*{・プライベートではない識別子はアンダースコア（\_）から始めない}
+\ \par
+\subsubsection*{・インデント}
+\begin{itemize}
+  \item[-] 2スペース\par
+
+  \item[-] 継続インデントは、4スペース\par
+
 
 \end{itemize}
+\ \par
 
+\subsubsection*{・空行のインデント}
+\ \par
 
-% \subsubsection*{＜空行のインデント＞}
-
-
-\subsubsection*{＜改行＞}
+\subsubsection*{・改行}
 \begin{itemize}
-  \item 空行の場合はインデントを維持しない（スペースを削除する）\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|//引数がchildの1つ|\par
-            \verb|Expand(child: Text('Hello')),|
-          \end{tcolorbox}
-        \end{center}\par
-        \ \par
-  \item 引数が2つ以上のWidgetは複数行で書く\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|// 引数がcolor, childの2つ|\par
-            \verb|Container(|\par
-            \ \ \verb|color: Colors.blue,|\par
-            \ \ \verb|child: Text('Hello'), // Textは1行可|\par
-            \verb|),|
-          \end{tcolorbox}
-        \end{center}\par
-        \ \par
+  \item[-] 空行の場合はインデントを維持しない（スペースを削除する）\par
 
-  \item Widgetの引数が1つでも、その子Widgetが複数行の場合は、改行。
+  \item[-] 引数が2つ以上のWidgetは複数行で書く\par
+
+  \item[-] Widgetの引数が1つでも、その子Widgetが複数行の場合は、改行。
         （1行でWidgetを書くのは、Widgetツリーの末端のみ）\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|//引数が1つだがchildが複数行なので|\par
-            \verb|//このWidget自身も複数行で書く|\par
-            \verb|Container(|\par
-            \ \ \verb|child: Text(|\par
-            \ \ \verb|'Hello',|\par
-            \ \ \verb|style: TextStyle(fontSize: 16.0),|\par
-            \ \verb|),|\par
-            \verb|),|
-          \end{tcolorbox}
-        \end{center}\par
-        \ \par
-        \clearpage
-  \item 例外として、Edgelnsetsは複数の引数があっても１行で良い\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|Container(|\par
-            \ \verb|padding: EdgeInsets.fromLTRB(1.0, 2.0, 3.0, 4.0),|\par
-            \verb|),|
-          \end{tcolorbox}
-        \end{center}\par
+
+  \item[-] 例外として、Edgelnsetsは複数の引数があっても１行で良い\par
+
 \end{itemize}
+\ \par
 
-
-\subsubsection*{＜括弧の位置＞}
+\subsubsection*{・括弧の位置}
 \begin{itemize}
-  \item 括弧の終了は、括弧の開始の後に改行しない場合は、同じ行で閉じる。\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|Container(child: Text('Hello')),|
-          \end{tcolorbox}
-        \end{center}\par
-        \ \par
+  \item[-] 括弧の終了は、括弧の開始の後に改行しない場合は、同じ行で閉じる。\par
 
-  \item 括弧の開始の後に改行した場合、
+
+  \item[-] 括弧の開始の後に改行した場合、
         中身の最終行の次の行で括弧を閉じる。
         尚、インデントはブロック開始時と同じにする。\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|Container(|\par
-            \ \verb|color: Colors.blue,|\par
-            \ \verb|child: Text('Hello'),|\par
-            \verb|),|
-          \end{tcolorbox}
-        \end{center}\par
-        \ \par
 
-  \item 関数の呼び出しで「名前なし引数」で開始する場合、
+
+  \item[-] 関数の呼び出しで「名前なし引数」で開始する場合、
         同じ行でWidgetの括弧を開始する。
         Widgetの閉じる括弧と関数呼び出しの閉じる括弧は同じ行。\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|someFunc(Container(|\par
-            \ \verb|color: Colors.blue,|\par
-            \ \verb|child: Text('Hello'),|\par
-            \verb|)),|
-          \end{tcolorbox}
-        \end{center}\par
-        \ \par
-        \clearpage
-  \item 関数の呼び出しで「名前あり引数」の場合は、
+
+  \item[-] 関数の呼び出しで「名前あり引数」の場合は、
         Widgetと同様に記述。\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|someFunc(|\par
-            \ \verb|foo|\par
-            \ \verb|barOption: true,|\par
-            \ \verb|title: Text(...),|\par
-            \verb|),|
-          \end{tcolorbox}
-        \end{center}\par
-        \ \par
+
 \end{itemize}
+\ \par
+\clearpage
 
-
-
-\subsubsection*{＜コメント＞}
+\subsubsection*{・コメント}
 \begin{itemize}
   \item[$\blacktriangleright$] \verb|//|\ を使用
   \item[$\blacktriangleright$] コメント開始\ \verb|//|\ とコメント本文のは半角スペースひとつ開ける
 \end{itemize}\par
+\ \par
 
 
-
-\subsubsection*{＜クラス＞}
+\subsubsection*{・クラス}
 \begin{itemize}
-  \item new \verb|/| const\par
+  \item[-] new \verb|/| const\par
         オブジェクト生成時の new は省略する。 const は省略しない。\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|final child = Container(...);|
-          \end{tcolorbox}
-        \end{center}\par
-        \ \par
 
-  \item var \verb|/| final\par
+
+  \item[-] var \verb|/| final\par
         初期化値の代入以後で変更（再代入）しない変数は、
         final で宣言する。\par
-        \ \par
-        \begin{center}
-          \begin{tcolorbox}[colframe=blue!7!green,
-              colback=green!20!white,
-              colbacktitle=green!93!blue!,
-              coltitle=black, fonttitle=\bfseries,
-              title=good,
-              width=14cm]
-            \verb|final value = someFunc();|
-          \end{tcolorbox}
-        \end{center}\par
+
+\end{itemize}
+\ \par
+\subsubsection*{・三項演算子}
+\begin{itemize}
+  \item[-] 2つの値のどちらかを得るだけの場合など、
+        単純な場合は使用して良い。
+        結果にさらに式を含まないようにする。\par
+
+  \item[-] 三項演算子のなかで使うものを予め計算するか、
+        別にメソッドなどに切り分ける。\par
 
 \end{itemize}
 
-\subsubsection*{＜三項演算子＞}
-2つの値のどちらかを得るだけの場合など、
-単純な場合は使用して良い。
-結果にさらに式を含まないようにする。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|color: android ? Colors.white : Colors.red,|
-  \end{tcolorbox}
 
-  \ \par
-  \begin{tcolorbox}[colframe=white!30!red,
-      colback=red!20!white,
-      colbacktitle=red!70!white,
-      coltitle=black, fonttitle=\bfseries,
-      title=bad,
-      width=14cm]
-    \verb|color: android ? Container(...long...) : Container(...long...),|
-  \end{tcolorbox}
-\end{center}\par
+
 \ \par
-三項演算子のなかで使うものを予め計算するか、
-別にメソッドなどに切り分ける。\par
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|color: android ? _buildTitleForMaterial() : _buildTitleForCupertino(),|
-  \end{tcolorbox}
-\end{center}\par
+
 
 
 \subsection*{順序}
-\subsubsection*{＜dart：から始まるインポートは他のインポートよりも前に置く＞}
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|import 'dart:async';|\par
-    \verb|import 'dart:html';|\par
-    \ \par
-    \verb|import 'package:bar/bar.dart';|\par
-    \verb|import 'package:foo/foo.dart';|
-  \end{tcolorbox}
-\end{center}\par
+\subsubsection*{・dart：から始まるインポートは他のインポートよりも前に置く}
 
 
-\subsubsection*{＜package：から始まるインポートは相対的なインポートよりも前に置く＞}
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|import 'package:bar/bar.dart';|\par
-    \verb|import 'package:foo/foo.dart';|\par
-    \ \par
-    \verb|import 'util.dart';|
-  \end{tcolorbox}
-\end{center}\par
 
-\subsubsection*{＜エクスポートはインポートとは別のセクションで指定する＞}
+\subsubsection*{・package：から始まるインポートは相対的なインポートよりも前に置く}
+
+
+\subsubsection*{・エクスポートはインポートとは別のセクションで指定する＞}
+
+
+\subsubsection*{・インポートやエクスポートは辞書順に並べ替える＞}
 \ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|import 'src/error.dart';|\par
-    \verb|import 'src/foo_bar.dart';|\par
-    \ \par
-    \verb|export 'src/error.dart';|
-  \end{tcolorbox}
-\end{center}\par
-\clearpage
-\subsubsection*{＜インポートやエクスポートは辞書順に並べ替える＞}
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|import 'package:bar/bar.dart';|\par
-    \verb|import 'package:foo/foo.dart';|\par
-    \ \par
-    \verb|import 'foo.dart';|\par
-    \verb|import 'foo/foo.dart';|
-  \end{tcolorbox}
-\end{center}\par
+
 
 
 \subsection*{整形}
-\subsubsection*{＜1行が81文字以上になることを避ける＞}
-\ \par
-\subsubsection*{＜ifやforの{}を省略しない＞}
-\ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|if (isWeekDay) {|\par
-    \ \verb|print('Bike to work!');|\par
-    \verb|} else {|\par
-    \verb|print('Go dancing or read a book!');|\par
-    \verb|}|
-  \end{tcolorbox}
-\end{center}\par
-\ \par
-例外として、ifにelseがなく、
+\subsubsection*{・1行が81文字以上になることを避ける}
+
+\subsubsection*{・ifやforの{}を省略しない}
+
+
+\verb|-|例外として、ifにelseがなく、
 かつ、全てが1行に収まる場合は{}は省略しても良い。\par
 \ \par
-\begin{center}
-  \begin{tcolorbox}[colframe=blue!7!green,
-      colback=green!20!white,
-      colbacktitle=green!93!blue!,
-      coltitle=black, fonttitle=\bfseries,
-      title=good,
-      width=14cm]
-    \verb|if (arg == null) return defaultValue;|
-  \end{tcolorbox}
-\end{center}\par
 
+\subsection*{・ツール}
+コード作成時に自動でこれまでのDart規約に従うように、
+以下のツールを導入し調整を行う。\par
+\begin{itemize}
+  \item[-] VScodeの設定である”format on save”を有効化にし、自動的にフォーマットを行う
+  \item[-] dart fix \verb|-|applyでコーディング規約に沿うように変換を行うコマンド
+  \item[-] flutter analyzeでコーディング規約違反の有無を表示するコマンド
+\end{itemize}
 
 \clearpage
