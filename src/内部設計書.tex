@@ -1,0 +1,67 @@
+\documentclass[a4paper,dvipdfmx]{jarticle}
+\usepackage{caption}
+% 数式用
+\usepackage{amsmath, amsfonts}  % 数式用
+\usepackage{bm} % 数式中の太字
+\usepackage{amssymb} % 記号
+% 画像用
+\usepackage{float} % 画像の挿入箇所を固定
+\usepackage[dvipdfmx]{graphicx} % 画像挿入用
+\usepackage{wrapfig} % 画像の周りに本文を流し込み
+% ページレイアウト
+\usepackage{here} % 画像を強制的に出力
+\usepackage{url} % URLリンク
+\usepackage{hyperref} % 
+\hypersetup{
+  colorlinks=false, % リンクに色をつけない設定
+  bookmarks=true, % 以下ブックマークに関する設定
+  bookmarksnumbered=true, % ブックマークに節番号などをつけるか
+  pdfborder={0 0 0}, % 枠なし
+  bookmarkstype=toc % 目次情報のブックマークを作る
+}
+\usepackage{multirow} % 表で行結合
+\usepackage[margin=20truemm]{geometry} %余白調整
+% 文字装飾
+\usepackage{color} % 文字色
+\usepackage[table,xcdraw]{xcolor} % 表の色
+\usepackage{ascmac} % 丸枠
+\usepackage{fancybox} % 丸枠
+\begin{document}
+\begin{titlepage}
+  \centering
+  \LARGE
+  内部設計書
+  \\\vspace{3cm}
+  地域密着型アルバイト求人アプリ\\
+  \textbf{REEL(Region Event Excitement Linkup)}
+  \\\vspace{4cm}
+  第 1.0 版
+  \\\vspace{4cm}
+  \today
+  \\\vspace{2.5cm}
+  \textbf{ChaO!株式会社}
+\end{titlepage}
+\tableofcontents
+\newpage
+% 概要はabstract
+% 動作環境はrequirements
+% 開発環境はdevelopment
+% コーディング規約はcoding
+% クラス設計はclass
+% API設計はapi
+% データベース設計はdatabase
+% メンバの貢献度はcontribution
+\input{tex/internal-design/abstract.tex}
+\input{tex/internal-design/requirements.tex}
+\input{tex/internal-design/development.tex}
+\input{tex/internal-design/coding.tex}
+\input{tex/internal-design/class.tex}
+\input{tex/internal-design/api.tex}
+\input{tex/internal-design/database.tex}
+\input{tex/internal-design/contribution.tex}
+\begin{thebibliography}{1}
+  \bibitem{bib:pep8}
+  ``PEP8-Style Guide for Python Code,''\\
+  \url{https://peps.python.org/pep-0008/}, 2023/12/5 閲覧.
+\end{thebibliography}
+\end{document}

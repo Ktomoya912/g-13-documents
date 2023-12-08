@@ -1,0 +1,44 @@
+\section{開発環境}
+\subsection{Flutter}
+Flutterの開発には、表\ref{tab:development-flutter}の環境を用いる。
+\begin{table}[H]
+  \centering
+  \caption{Flutter開発環境}
+  \label{tab:development-flutter}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \rowcolor[HTML]{C0C0C0}
+    項目          & 内容                 & 説明           \\ \hline
+    使用するフレームワーク & Flutter            &              \\ \hline
+    プログラミング言語   & Dart               &              \\ \hline
+    バージョン管理     & Git                &              \\ \hline
+    使用するOS      & Windows, Mac       &              \\ \hline
+    使用するエディタ    & Visual Studio Code &              \\ \hline
+    拡張機能        & Flutter            & Flutter開発に必要 \\ \hline
+  \end{tabular}
+\end{table}
+
+\subsection{FastAPI}
+FastAPIの開発には、表\ref{tab:development-fastapi}の環境を用いる。
+
+\begin{table}[H]
+  \centering
+  \caption{FastAPI開発環境}
+  \label{tab:development-fastapi}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \rowcolor[HTML]{C0C0C0}
+    項目                     & 内容                    & 説明                      \\ \hline
+    使用するフレームワーク            & FastAPI               &                         \\ \hline
+    プログラミング言語              & Python                &                         \\ \hline
+    バージョン管理                & Git                   &                         \\ \hline
+    コンテナプラットフォーム           & Docker                &                         \\ \hline
+    使用するOS                 & Windows, Mac          &                         \\ \hline
+    使用するエディタ               & Visual Studio Code    &                         \\ \hline
+                           & Python Extension Pack & Pythonで必要な拡張機能をまとめたもの   \\ \cline{2-3}
+                           & Black                 & Pythonのフォーマッタ。          \\ \cline{2-3}
+                           & Flake8                & コーディング規約を強制するもの。        \\ \cline{2-3}
+                           & isort                 & importを自動的に並べ替えしてくれる。   \\ \cline{2-3}
+    \multirow{-5}{*}{拡張機能} & Dev Containers        & コンテナ上でVSCodeを実行するために必要。 \\ \hline
+  \end{tabular}
+\end{table}

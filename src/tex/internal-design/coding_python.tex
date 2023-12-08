@@ -1,0 +1,25 @@
+\subsection{Python}\label{sec:python}
+\subsubsection{命名規約}
+\begin{table}[H]
+  \centering
+  \caption{Pythonの命名規約}
+  \label{tab:code-python}
+  \begin{tabular}{|c|c|c|} \hline
+    対象     & ケース                & 例                \\ \hline \hline
+    モジュール名 & snake\_case        & database\_models \\ \hline
+    パッケージ名 & snake\_case        & my\_package      \\ \hline
+    クラス名   & UpperCamelCase     & UserCreate       \\ \hline
+    関数名    & snake\_case        & create\_user     \\ \hline
+    変数名    & snake\_case        & is\_active       \\ \hline
+    定数名    & UPPER\_SNAKE\_CASE & THIS\_IS\_STATIC \\ \hline
+  \end{tabular}
+\end{table}
+また、補足で"\_"で始まる変数は、プライベート変数を表し、外部からアクセスしないようにする。
+例外クラスは、"Error"で終わるようにする。
+インスタンスメソッドの第一引数は、"self"とする。
+クラスメソッドの第一引数は、"cls"とする。
+\subsubsection{コーディングスタイル}
+コーディングスタイルは~\href{https://pep8-ja.readthedocs.io/ja/latest}{\textbf{PEP8}}~に従う。
+また、意識せずともコーディングスタイルを統一するために、black Formatter,
+isort, flake8を使用する。これらを保存時に自動で実行するように設定することで、
+空行や改行、importの順番などを自動で整形する。
