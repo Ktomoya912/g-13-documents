@@ -174,7 +174,7 @@ Dartの識別子には以下のように大きく３種類に分けることが�
 \subsection*{整形}
 \subsubsection*{・1行が81文字以上になることを避ける}
 
-\subsubsection*{・ifやforの{}を省略しない}
+\subsubsection*{・ifやforの\{\}を省略しない}
 
 
 \verb|-|例外として、ifにelseがなく、
@@ -182,11 +182,11 @@ Dartの識別子には以下のように大きく３種類に分けることが�
 \ \par
 
 \subsection*{・ツール}
-コード作成時に自動でこれまでのDart規約に従うように、
+コード作成時に自動でこれらのDart規約に従うように、
 以下のツールを導入し調整を行う。\par
 \begin{itemize}
   \item[-] VScodeの設定である”format on save”を有効化にし、自動的にフォーマットを行う
-  \item[-] dart fix \verb|-|applyでコーディング規約に沿うように変換を行うコマンド
+  \item[-] dart fix \verb|--|applyでコーディング規約に沿うように変換を行うコマンド
   \item[-] flutter analyzeでコーディング規約違反の有無を表示するコマンド
 \end{itemize}
 
