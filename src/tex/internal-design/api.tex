@@ -251,8 +251,8 @@
       event\_description & string & イベント概要  & body     \\ \hline
       participation\_fee & string & 参加費     & body     \\ \hline
       capacity           & string & 定員      & body     \\ \hline
-      event\_tag         & string & イベントタグ  & body     \\ \hline
-      event\_time        & string & 開催日時    & body     \\ \hline
+      event\_tag         & array & イベントタグ  & body     \\ \hline
+      event\_time        & array & 開催日時    & body     \\ \hline
     \end{tabular}
   \end{minipage}
   \begin{minipage}
@@ -309,8 +309,8 @@
       event\_description & string & イベント概要  & body     \\ \hline
       participation\_fee & string & 参加費     & body     \\ \hline
       capacity           & string & 定員      & body     \\ \hline
-      event\_tag         & string & イベントタグ  & body     \\ \hline
-      event\_time        & string & 開催日時    & body     \\ \hline
+      event\_tag         & array & イベントタグ  & body     \\ \hline
+      event\_time        & array & 開催日時    & body     \\ \hline
     \end{tabular}
   \end{minipage}
   \begin{minipage}
@@ -362,8 +362,7 @@
       keyword      & string & キーワード  & query    \\ \hline
       job\_tag     & string & 求人タグ   & query    \\ \hline
       job\_time    & string & 勤務時間   & query    \\ \hline
-      job\_salary  & string & 給与     & query    \\ \hline
-      job\_address & string & 勤務地    & query    \\ \hline
+      salary  & string & 給与     & query    \\ \hline
     \end{tabular}
   \end{minipage}
   \begin{minipage}
@@ -372,6 +371,521 @@
     \begin{tabular}{|c|c|c|} \hline
       パラメータ & 型             & 説明   \\ \hline \hline
       jobs  & array[object] & 求人一覧 \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{求人情報登録}
+\textbf{POST} \texttt{jobs}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ         & 型      & 説明      & パラメータの位置 \\ \hline \hline
+      token         & string & トークン    & header   \\ \hline
+      title         & string & タイトル    & body     \\ \hline
+      postal\_code  & string & 郵便番号    & body     \\ \hline
+      prefecture    & string & 都道府県    & body     \\ \hline
+      city          & string & 市区町村    & body     \\ \hline
+      address       & string & 住所      & body     \\ \hline
+      phone\_number & string & 電話番号    & body     \\ \hline
+      email         & string & メールアドレス & body     \\ \hline
+      homepage      & string & ホームページ  & body     \\ \hline
+      is\_one\_day  & string & 短期バイトか否か    & body     \\ \hline
+      job\_description & string & 求人概要    & body     \\ \hline
+      job\_tag      & array & 求人タグ    & body     \\ \hline
+      job\_time     & array & 勤務時間    & body     \\ \hline
+      salary   & string & 給与      & body     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ   & 型      & 説明    \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{求人情報取得}
+\textbf{GET} \texttt{jobs/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token & string & トークン   & header   \\ \hline
+      id    & string & 求人ID   & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     \\ \hline \hline
+      job   & object & 求人情報   \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{求人情報更新}
+\textbf{PUT} \texttt{jobs/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ         & 型      & 説明      & パラメータの位置 \\ \hline \hline
+      token         & string & トークン    & header   \\ \hline
+      id            & string & 求人ID    & path     \\ \hline
+      title         & string & タイトル    & body     \\ \hline
+      postal\_code  & string & 郵便番号    & body     \\ \hline
+      prefecture    & string & 都道府県    & body     \\ \hline
+      city          & string & 市区町村    & body     \\ \hline
+      address       & string & 住所      & body     \\ \hline
+      phone\_number & string & 電話番号    & body     \\ \hline
+      email         & string & メールアドレス & body     \\ \hline
+      homepage      & string & ホームページ  & body     \\ \hline
+      is\_one\_day  & string & 短期バイトか否か    & body     \\ \hline
+      job\_description & string & 求人概要    & body     \\ \hline
+      job\_tag      & array & 求人タグ    & body     \\ \hline
+      job\_time     & array & 勤務時間    & body     \\ \hline
+      salary   & string & 給与      & body     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ   & 型      & 説明    \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{求人情報削除}
+\textbf{DELETE} \texttt{jobs/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token & string & トークン   & header   \\ \hline
+      id    & string & 求人ID   & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ   & 型      & 説明    \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{求人応募}
+\textbf{POST} \texttt{jobs/:id/apply}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token & string & トークン   & header   \\ \hline
+      id    & string & 求人ID   & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ   & 型      & 説明    \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsection*{求人応募履歴}
+\subsubsection*{求人応募履歴一覧取得(ユーザー)}
+\textbf{GET} \texttt{jobs/applications/me}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ        & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token        & string & トークン   & header   \\ \hline
+      limit        & number & 取得数    & query    \\ \hline
+      offset       & number & 取得開始位置 & query    \\ \hline
+      sort         & string & ソート順   & query    \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ        & 型             & 説明     \\ \hline \hline
+      job\_applications & array[object] & 求人応募履歴(求人情報) \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{求人応募履歴一覧取得(企業)}
+\textbf{GET} \texttt{jobs/applications/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ        & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token        & string & トークン   & header   \\ \hline
+      id           & string & 求人ID   & path     \\ \hline
+      limit        & number & 取得数    & query    \\ \hline
+      offset       & number & 取得開始位置 & query    \\ \hline
+      sort         & string & ソート順   & query    \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ        & 型             & 説明     \\ \hline \hline
+      job\_applications & array[object] & 求人応募履歴(ユーザー情報) \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsection*{お気に入り情報}
+\subsubsection*{お気に入り登録(イベント)}
+\textbf{POST} \texttt{favorites/events/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token & string & トークン   & header   \\ \hline
+      id    & string & イベントID & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ   & 型      & 説明    \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{お気に入り削除(イベント)}
+\textbf{DELETE} \texttt{favorites/events/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token & string & トークン   & header   \\ \hline
+      id    & string & イベントID & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ   & 型      & 説明    \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{お気に入り一覧取得(イベント)}
+\textbf{GET} \texttt{favorites/events}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ        & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token        & string & トークン   & header   \\ \hline
+      limit        & number & 取得数    & query    \\ \hline
+      offset       & number & 取得開始位置 & query    \\ \hline
+      sort         & string & ソート順   & query    \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ        & 型             & 説明     \\ \hline \hline
+      events & array[object] & イベント一覧 \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{お気に入り登録(求人)}
+\textbf{POST} \texttt{favorites/jobs/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token & string & トークン   & header   \\ \hline
+      id    & string & 求人ID   & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none}
+    \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ   & 型      & 説明    \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{お気に入り削除(求人)}
+\textbf{DELETE} \texttt{favorites/jobs/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token & string & トークン   & header   \\ \hline
+      id    & string & 求人ID   & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ   & 型      & 説明    \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{お気に入り一覧取得(求人)}
+\textbf{GET} \texttt{favorites/jobs}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ        & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token        & string & トークン   & header   \\ \hline
+      limit        & number & 取得数    & query    \\ \hline
+      offset       & number & 取得開始位置 & query    \\ \hline
+      sort         & string & ソート順   & query    \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ        & 型             & 説明     \\ \hline \hline
+      jobs & array[object] & 求人一覧 \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsection*{プラン情報}
+\subsubsection*{プラン一覧取得}
+\textbf{GET} \texttt{plans}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ        & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token        & string & トークン   & header   \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ        & 型             & 説明     \\ \hline \hline
+      plans & array[object] & プラン一覧 \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{プラン情報登録}
+\textbf{POST} \texttt{plans}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ         & 型      & 説明      & パラメータの位置 \\ \hline \hline
+      token         & string & トークン    & header   \\ \hline
+      name         & string & プラン名    & body     \\ \hline
+      price         & number & 価格    & body     \\ \hline
+      period         & number & 期間    & body     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ         & 型      & 説明      \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsection*{プラン情報取得}
+\textbf{GET} \texttt{plans/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token & string & トークン   & header   \\ \hline
+      id    & string & プランID & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ         & 型      & 説明      \\ \hline \hline
+      plan & object & プラン情報 \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{プラン情報更新}
+\textbf{PUT} \texttt{plans/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ         & 型      & 説明      & パラメータの位置 \\ \hline \hline
+      token         & string & トークン    & header   \\ \hline
+      id         & string & プランID    & path     \\ \hline
+      name         & string & プラン名    & body     \\ \hline
+      price         & number & 価格    & body     \\ \hline
+      period         & number & 期間    & body     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ         & 型      & 説明      \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{プラン情報削除}
+\textbf{DELETE} \texttt{plans/:id}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token & string & トークン   & header   \\ \hline
+      id    & string & プランID & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      パラメータ         & 型      & 説明      \\ \hline \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsubsection*{プラン購入}
+\textbf{POST} \texttt{plans/:id/purchase}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ         & 型      & 説明      & パラメータの位置 \\ \hline \hline
+      token         & string & トークン    & header   \\ \hline
+      id         & string & プランID    & path     \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      message & string & メッセージ \\ \hline
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\subsection*{プラン購入履歴}
+\subsubsection*{プラン購入履歴一覧取得}
+\textbf{GET} \texttt{plans/purchases}
+\begin{table}[H]
+  \begin{minipage}
+    {0.5\hsize}
+    \centering
+    \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Request}}
+    \small
+    \begin{tabular}{|c|c|c|c|} \hline
+      パラメータ        & 型      & 説明     & パラメータの位置 \\ \hline \hline
+      token        & string & トークン   & header   \\ \hline
+      limit        & number & 取得数    & query    \\ \hline
+      offset       & number & 取得開始位置 & query    \\ \hline
+      sort         & string & ソート順   & query    \\ \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}
+    {0.5\hsize} \centering \captionsetup{labelformat=empty,labelsep=none} \caption{\textbf{Response}}
+    \begin{tabular}{|c|c|c|} \hline
+      plans & array[object] & プラン購入履歴 \\ \hline
     \end{tabular}
   \end{minipage}
 \end{table}
