@@ -1,8 +1,10 @@
 
-\begin{table}[H]
-  \centering
-  \begin{tabular}{|c|l|l|} \hline
-    モジュール名 & \multicolumn{2}{l|}{mypage.dart} \\ \hline
+
+\begin{longtable}{|c|l|l|} 
+  
+  \endfirsthead
+  \hline
+  モジュール名 & \multicolumn{2}{l|}{mypage.dart} \\ \hline
     モジュール概要 & \multicolumn{2}{p{12cm}|}{マイページ画面を表示するモジュール} \\ \hline
     責任者 & \multicolumn{2}{l|}{新谷光城} \\ \hline
     \multirow{7}{*}{構成要素} & クラス名 & MyPageRouterPage \\ \cline{2-3}
@@ -12,14 +14,14 @@
                             & 出力 & Route \\ \cline{2-3}
                             & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
                             & \multicolumn{2}{p{14cm}|}{なし} \\ \hline
-    \multirow{7}{*}{構成要素} & クラス名 & MyPage \\ \cline{2-3}
+                            \multirow{7}{*}{構成要素} & クラス名 & MyPage \\ \cline{2-3}
                             & クラス種類 & extends StatelessWidget \\ \cline{2-3}
                             & 処理概要 & \multicolumn{1}{p{12cm}|}{マイページ画面を動的に変更するクラス} \\ \cline{2-3}
                             & 入力 & なし \\ \cline{2-3}
                             & 出力 & Widget \\ \cline{2-3}
                             & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
                             & \multicolumn{2}{p{14cm}|}{mypage.dartのMyPageStateクラスを組み込む} \\ \hline
-    \multirow{7}{*}{構成要素} & クラス名 & MyPageState \\ \cline{2-3}
+                            \multirow{7}{*}{構成要素} & クラス名 & MyPageState \\ \cline{2-3}
                             & クラス種類 & extends StatelessWidget \\ \cline{2-3}
                             & 処理概要 & \multicolumn{1}{p{12cm}|}{マイページ画面の状態を返すクラス} \\ \cline{2-3}
                             & 入力 & なし \\ \cline{2-3}
@@ -60,8 +62,14 @@
                               \newline log\_out.dartのLogOutクラスを呼び出しログアウトオーバーレイを表示
                               \newline secession.dartのSecessionクラスを呼び出し退会オーバーレイを表示
                             } \\ \hline
-  \end{tabular}
-\end{table}
+\end{longtable}
+
+% \begin{table}[H]
+%   \centering
+%   \begin{tabular}{|c|l|l|} \hline
+    
+%   \end{tabular}
+% \end{table}
 
 \begin{table}[H]
   \centering
