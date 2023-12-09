@@ -1,4 +1,4 @@
-\section{クラス設計}\label{sec:dart-class}
+\section{モジュール設計}\label{sec:dart-module}
 
 \subsection*{overlay}
 \begin{table}[H]
@@ -9,11 +9,11 @@
     責任者 & \multicolumn{2}{l|}{金川幸太}           \\ \hline
     \multirow{7}{*}{構成要素}       & クラス名 & Rule      \\ \cline{2-3}
       & クラス種類 & extends StatelessWidget \\ \cline{2-3}
-      & 処理概要 & 利用規約のオーバーレイを表示する。 \\ \cline{2-3}
+      & 処理概要 & \multicolumn{1}{p{12cm}|}{利用規約のオーバーレイを表示する。} \\ \cline{2-3}
       & 入力 & なし \\ \cline{2-3}
       & 出力 & Widget \\ \cline{2-3}
       & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
-      & \multicolumn{2}{p{12cm}|}{ボタンを押すことで、rule\_screen.dartのRuleScreen().show(context, text)を呼び出す}  \\ \hline
+      & \multicolumn{2}{p{14cm}|}{ボタンを押すことで、rule\_screen.dartのRuleScreen().show(context, text)を呼び出す}  \\ \hline
   \end{tabular}
 \end{table}
 
@@ -25,11 +25,11 @@
     責任者 & \multicolumn{2}{l|}{金川幸太} \\ \hline
     \multirow{7}{*}{構成要素} & クラス名 & RuleScreen      \\ \cline{2-3}
       & クラス種類 & OverlayEntry \\ \cline{2-3}
-      & 処理概要 & オーバーレイの内容を返す \\ \cline{2-3}
+      & 処理概要 & \multicolumn{1}{p{12cm}|}{オーバーレイの内容を返す} \\ \cline{2-3}
       & 入力 & Buildcontext context, String text \\ \cline{2-3}
       & 出力 & Material \\ \cline{2-3}
       & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
-      & \multicolumn{2}{p{12cm}|}{ボタンを押すことで、rule\_screen.dartのRuleScreen().show(context, text)が呼び出され、オーバレイ表示
+      & \multicolumn{2}{p{14cm}|}{ボタンを押すことで、rule\_screen.dartのRuleScreen().show(context, text)が呼び出され、オーバレイ表示
       ElevatedButtonの処理がされると、RuleScreen().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる}  \\ \hline
   \end{tabular}
 \end{table}
@@ -42,14 +42,15 @@
     責任者 & \multicolumn{2}{l|}{金川幸太}           \\ \hline
     \multirow{7}{*}{構成要素}  & クラス名 & RuleScreenControl      \\ \cline{2-3}
       & クラス種類 & immutable \\ \cline{2-3}
-      & 処理概要 & オーバーレイの内容を返す \\ \cline{2-3}
+      & 処理概要 & \multicolumn{1}{p{12cm}|}{オーバーレイの内容を返す} \\ \cline{2-3}
       & 入力 & String text(option) \\ \cline{2-3}
       & 出力 & Widget \\ \cline{2-3}
       & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
-      & \multicolumn{2}{p{12cm}|}{ CloseLoadingScreenによってオーバレイを閉じる \newline
+      & \multicolumn{2}{p{14cm}|}{ CloseLoadingScreenによってオーバレイを閉じる \newline
       UpdateLoadingScreenによってオーバーレイを表示}  \\ \hline
   \end{tabular}
 \end{table}
+
 \subsection*{provider}
 
 \begin{table}[H]
@@ -65,7 +66,7 @@
       & 入力 & なし \\ \cline{2-3}
       & 出力 & なし \\ \cline{2-3}
       & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
-      & \multicolumn{2}{p{12cm}|}{なし}  \\ \hline
+      & \multicolumn{2}{p{14cm}|}{なし}  \\ \hline
   \end{tabular}
 \end{table}
 \subsection*{page}
