@@ -1,185 +1,63 @@
 \subsection{Dart}
+\subsubsection{命名規約}
+\begin{table}[H]
+  \centering
+  \caption{Dartの命名規約}
+  \label{tab:code-dart}
+  \begin{tabular}{|c|c|c|} \hline
+    対象     & ケース                & 例                \\ \hline \hline
+    モジュール名 & snake\_case        & database\_models \\ \hline
+    パッケージ名 & snake\_case        & my\_package      \\ \hline
+    クラス名   & UpperCamelCase     & UserCreate       \\ \hline
+    関数名    & lowerCamelCase        & getData     \\ \hline
+    変数名    & lowerCamelCase        & sampleData       \\ \hline
+    定数名    & lowerCamelCase & THIS\_IS\_STATIC \\ \hline
+  \end{tabular}
+\end{table}
 
-\subsection*{識別子}
-Dartの識別子には以下のように大きく３種類に分けることが出来る。\par
+\subsubsection{コーディングスタイル}
+Dartのコーディングスタイルは~\href{https://dart.dev/effective-dart/style}{\textbf{Effective Dart}}~に従う。
+以下に、主な規約を記載する。
+
 \begin{itemize}
-  \item \textbf{UpperCamelCase}：名前では、各単語の最初の文字が大文字になり、最初の文字も含まれる。
-  \item \textbf{lowerCamelCase}：名前では、頭文字を覗き、各単語の最初の文字を大文字にする
-  \item \textbf{snake\_case}：頭字語であっても、小文字のみを使用し、単語は\_で区切る。
-\end{itemize}
-これを元に型やファイルなどの識別子を定める。
-
-\subsubsection*{・型にはUpperCamelCaseを用いる。}
-クラス、列挙型、typedefs、型パラメータは、各単語の最初の文字を大文字にし（最初の単語を含む）、セパレータを使用しない。\par
-これには、メタデータ注釈で使用されることを意図したクラスも含む。\par
-
-アノテーションクラスのコンストラクタがパラメータを取らない場合、それ用に別のloweCamelCase定数を作成した方が良い。\par
-
-\subsubsection*{・拡張子には、UpperCamelCaseを使う。}
-タイプ同様、拡張子は各単語の最初の文字を大文字に（最初の単語を含む）、セパレータを使用しない。\par
-
-
-
-
-
-\subsubsection*{・ライブラリ、パッケージ、ディレクトリ、ソースファイルにはsnake\_caseを使う}
-ファイルシステムによっては大文字と小文字が区別されないため、
-多くのプロジェクトでファイル名を全て小文字にする必要がある。
-区切り文字を使用することで、
-そのような形式でも名前を読むことができる。
-アンダースコア（\_）をセパレータとして使用すると、
-名前が有効なDart識別子であることが保証される。これは、
-言語が後にシンボリックインポートをサポートする場合に便利である。\par
-
-\subsubsection*{・インポートプレフィックスにはsnake\_caseを使う}
-\ \par
-
-\subsubsection*{・他の識別子（変数名や関数名）にはlowerCamelCaseを使う}
-クラスメンバー、トップレベル定義、変数、パラメータ、
-名前付きパラメータは、
-最初の単語を除く各単語の最初の文字を大文字にし、
-セパレータを使用しない。\par
-\clearpage
-
-\subsubsection*{・定数には、lowerCamelCaseを使う方が良い}
-新しいコードでは、enum値を含む定数変数にlowerCamelCaseを使用する。\par
-
-次の場合のように、
-既存のコードとの一貫性のためにSCREAMING\_CAPSを使用できる。\par
-\begin{itemize}
-  \item[$\blacktriangleright$]SCREAMING\_CAPS既に使用しているファイル
-        またはライブラリにコードを追加する場合\par
-  \item[$\blacktriangleright$]Javaコードと並行するDartコードを生成する場合、
-        例えば、protobufsから生成された列挙されたタイプで
-\end{itemize}
-
-
-
-\subsubsection*{・3文字以上の頭文字と略語は1文字目を大文字にする（普通の単語のように扱う）}
-\ \par
-
-
-
-\subsubsection*{・未使用のコールバック引数には\ 、や\ \_\ を使用した方が良い}
-\begin{itemize}
-  \item[-] 関数に複数の未使用のパラメータがある場合は、
-        名前の衝突を避けるために追加のアンダースコア（\_）を使用する。
-\end{itemize}
-\ \par
-
-
-\subsubsection*{・プライベートではない識別子はアンダースコア（\_）から始めない}
-\ \par
-\subsubsection*{・インデント}
-\begin{itemize}
-  \item[-] 2スペース\par
-
-  \item[-] 継続インデントは、4スペース\par
-
-
-\end{itemize}
-\ \par
-
-\subsubsection*{・空行のインデント}
-\ \par
-
-\subsubsection*{・改行}
-\begin{itemize}
-  \item[-] 空行の場合はインデントを維持しない（スペースを削除する）\par
-
-  \item[-] 引数が2つ以上のWidgetは複数行で書く\par
-
-  \item[-] Widgetの引数が1つでも、その子Widgetが複数行の場合は、改行。
-        （1行でWidgetを書くのは、Widgetツリーの末端のみ）\par
-
-  \item[-] 例外として、Edgelnsetsは複数の引数があっても１行で良い\par
-
-\end{itemize}
-\ \par
-
-\subsubsection*{・括弧の位置}
-\begin{itemize}
-  \item[-] 括弧の終了は、括弧の開始の後に改行しない場合は、同じ行で閉じる。\par
-
-
-  \item[-] 括弧の開始の後に改行した場合、
-        中身の最終行の次の行で括弧を閉じる。
-        尚、インデントはブロック開始時と同じにする。\par
-
-
-  \item[-] 関数の呼び出しで「名前なし引数」で開始する場合、
-        同じ行でWidgetの括弧を開始する。
-        Widgetの閉じる括弧と関数呼び出しの閉じる括弧は同じ行。\par
-
-  \item[-] 関数の呼び出しで「名前あり引数」の場合は、
-        Widgetと同様に記述。\par
-
-\end{itemize}
-\ \par
-\clearpage
-
-\subsubsection*{・コメント}
-\begin{itemize}
-  \item[$\blacktriangleright$] \verb|//|\ を使用
-  \item[$\blacktriangleright$] コメント開始\ \verb|//|\ とコメント本文のは半角スペースひとつ開ける
-\end{itemize}\par
-\ \par
-
-
-\subsubsection*{・クラス}
-\begin{itemize}
-  \item[-] new \verb|/| const\par
-        オブジェクト生成時の new は省略する。 const は省略しない。\par
-
-
-  \item[-] var \verb|/| final\par
-        初期化値の代入以後で変更（再代入）しない変数は、
-        final で宣言する。\par
-
-\end{itemize}
-\ \par
-\subsubsection*{・三項演算子}
-\begin{itemize}
-  \item[-] 2つの値のどちらかを得るだけの場合など、
-        単純な場合は使用して良い。
-        結果にさらに式を含まないようにする。\par
-
-  \item[-] 三項演算子のなかで使うものを予め計算するか、
-        別にメソッドなどに切り分ける。\par
+      \item 未使用のコールバック引数には\ 、や\ \_\ を使用する
+      \item プライベートではない識別子はアンダースコア（\_）から始めない
+      \item インデントは2スペース
+      \item 空行の場合はインデントを維持しない（スペースを削除する）
+      \item 引数が2つ以上のWidgetは複数行で書く
+      \item Widgetの引数が1つでも、その子Widgetが複数行の場合は、改行。（1行でWidgetを書くのは、Widgetツリーの末端のみ）
+      \item 例外として、Edgelnsetsは複数の引数があっても1行で良い
+      \item 1行が80文字を超えないようにする
+      \item 括弧の終了は、括弧の開始の後に改行しない場合は、同じ行で閉じる。
+      \item 括弧の開始の後に改行した場合、
+      中身の最終行の次の行で括弧を閉じる。
+      尚、インデントはブロック開始時と同じにする。
+      \item 関数の呼び出しで「名前なし引数」で開始する場合、
+      同じ行でWidgetの括弧を開始する。
+      Widgetの閉じる括弧と関数呼び出しの閉じる括弧は同じ行。
+      \item 関数の呼び出しで「名前あり引数」の場合は、
+      Widgetと同様に記述。
+      \item \verb|//|\ を使用
+      \item コメント開始\ \verb|//|\ とコメント本文のは半角スペースひとつ開ける
+      \item オブジェクト生成時の new は省略する。 const は省略しない。
+      \item 初期化値の代入以後で変更（再代入）しない変数は、
+      final で宣言する。
+      \item 2つの値のどちらかを得るだけの場合など、
+      単純な場合は使用して良い。
+      結果にさらに式を含まないようにする。
+      \item 三項演算子のなかで使うものを予め計算するか、
+      別にメソッドなどに切り分ける。
+      \item dart\:から始まるインポートは他のインポートよりも前に置く
+      \item package\:から始まるインポートは相対的なインポートよりも前に置く
+      \item エクスポートはインポートとは別のセクションで指定する
+      \item インポートやエクスポートは辞書順に並べ替える
+      \item 1行が81文字以上になることを避ける
+      \item ifやforの\{\}を省略しない
+      \item 例外として、ifにelseがなく、
+      かつ、全てが1行に収まる場合は{}は省略しても良い。
 
 \end{itemize}
 
-
-
-\ \par
-
-
-
-\subsection*{順序}
-\subsubsection*{・dart：から始まるインポートは他のインポートよりも前に置く}
-
-
-
-\subsubsection*{・package：から始まるインポートは相対的なインポートよりも前に置く}
-
-
-\subsubsection*{・エクスポートはインポートとは別のセクションで指定する＞}
-
-
-\subsubsection*{・インポートやエクスポートは辞書順に並べ替える＞}
-\ \par
-
-
-
-\subsection*{整形}
-\subsubsection*{・1行が81文字以上になることを避ける}
-
-\subsubsection*{・ifやforの\{\}を省略しない}
-
-
-\verb|-|例外として、ifにelseがなく、
-かつ、全てが1行に収まる場合は{}は省略しても良い。\par
-\ \par
 
 \subsection*{・ツール}
 コード作成時に自動でこれらのDart規約に従うように、
