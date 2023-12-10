@@ -1,0 +1,35 @@
+\subsection*{overlay}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{rule\_screen.dart}  \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{利用規約のオーバーレイで表示される内容を生成するコンポーネント} \\ \hline
+    責任者 & \multicolumn{2}{l|}{金川幸太} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & RuleScreen      \\ \cline{2-3}
+      & クラス種類 & OverlayEntry \\ \cline{2-3}
+      & 処理概要 & \multicolumn{1}{p{12cm}|}{オーバーレイの内容を返す} \\ \cline{2-3}
+      & 入力 & Buildcontext context, String text \\ \cline{2-3}
+      & 出力 & Material \\ \cline{2-3}
+      & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
+      & \multicolumn{2}{p{14cm}|}{ボタンを押すことで、rule\_screen.dartのRuleScreen().show(context, text)が呼び出され、オーバレイ表示
+      ElevatedButtonの処理がされると、RuleScreen().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる}  \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{rule\_screen\_controller.dart}  \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{オーバーレイの表示、非表示の操作を行うコンポーネント}           \\ \hline
+    責任者 & \multicolumn{2}{l|}{金川幸太}           \\ \hline
+    \multirow{7}{*}{構成要素}  & クラス名 & RuleScreenControl      \\ \cline{2-3}
+      & クラス種類 & immutable \\ \cline{2-3}
+      & 処理概要 & \multicolumn{1}{p{12cm}|}{オーバーレイの内容を返す} \\ \cline{2-3}
+      & 入力 & String text(option) \\ \cline{2-3}
+      & 出力 & Widget \\ \cline{2-3}
+      & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
+      & \multicolumn{2}{p{14cm}|}{ CloseLoadingScreenによってオーバレイを閉じる \newline
+      UpdateLoadingScreenによってオーバーレイを表示}  \\ \hline
+  \end{tabular}
+\end{table}
