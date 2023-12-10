@@ -1,0 +1,209 @@
+\subsection*{component}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{post\_list.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{イベント、求人投稿の一覧を表示するレイヤー} \\ \hline
+    責任者 & \multicolumn{2}{l|}{新谷光城} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & PostList \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{bodyの呼び出された部分に投稿一覧を設置するコンポーネント} \\ \cline{2-3}
+                            & 入力 & List$<$Map$<$String, dynamic$>$$>$ articles, Map$<$String, dynamic$>$$>$ \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{
+                            event\_post\_detail.dartのEventPostDetailクラスを呼び出すことでイベント広告詳細画面を表示
+                            \newline job\_post\_detail.dartのJobPostDetailクラスを呼び出すことでイベント広告詳細画面を表示} \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{text\_enter\_box.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{デコレーションされた入力フォームを返すコンポーネント} \\ \hline
+    責任者 & \multicolumn{2}{l|}{山本昇永} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & TextEnterBox \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{入力フォームを表示するクラス} \\ \cline{2-3}
+                            & 入力 & String label, String histText, double width, bool isShow \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{なし} \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{password\_input.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{パスワードを入力するフォームを作成するコンポーネント} \\ \hline
+    責任者 & \multicolumn{2}{l|}{山本昇永} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & PasswordInput \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{パスワード入力フォームのWidgetを動的に変更するクラス} \\ \cline{2-3}
+                            & 入力 & String label, bool isHidden \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{password\_input.dartのPasswordInputStateクラスを読み込む} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & PasswordInputState \\ \cline{2-3}
+                            & クラス種類 & extends State \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{パスワード入力フォームの状態を返すクラス} \\ \cline{2-3}
+                            & 入力 & なし \\ \cline{2-3}
+                            & 出力 & State \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{なし} \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{company\_form.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{法人が入力するフォームを出力するコンポーネント} \\ \hline
+    責任者 & \multicolumn{2}{l|}{山本昇永} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & CompanyForm \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{法人用の入力フォームのWidgetを動的に変更するクラス} \\ \cline{2-3}
+                            & 入力 & bool canEdit \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{なし} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & CompanyFormState \\ \cline{2-3}
+                            & クラス種類 & extends State \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{法人用の入力フォームの状態を返すクラス} \\ \cline{2-3}
+                            & 入力 & なし \\ \cline{2-3}
+                            & 出力 & State \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{text\_enter\_box.dartのTextEnterBoxクラスを呼び出すことで入力フォームを表示} \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{finish\_screen.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{完了画面を生成するコンポーネント} \\ \hline
+    責任者 & \multicolumn{2}{l|}{金川幸太} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & FinishScreen \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{アイコン、テキストを引数で与えることによって、任意の完了画面を生成するコンポーネント} \\ \cline{2-3}
+                            & 入力 & \multicolumn{1}{p{12cm}|}{String appbarText, IconData appIcon, String text, String buttonText bool isAppbar} \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{
+                              title\_appbar.dartのTitleAppBarクラスを組み込む
+                              \newline normal\_bottom\_appbar.dartのNormalBottomAppBarクラスを組み込む
+                              \newline button\_set.dartのButtonSetクラスを組み込む
+                              \newline LoginRouteの最初の画面へと戻る
+                            } \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & QuestionButton \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{お問合せボタンを生成するコンポーネント} \\ \cline{2-3}
+                            & 入力 & なし \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{
+                            change\_general\_corporation.dartのChangeGeneralCorporationクラスを組み込む
+                            \newline ask\_page.dartのAskPageクラスを呼び出し問い合わせ画面を表示} \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/internal-design/state_change_diagram/finish_page.pdf}
+  \caption{finish\_screen.dartの状態遷移図}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{coment\_box.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{コメントまたは文を入力できる項目を生成するコンポーネント} \\ \hline
+    責任者 & \multicolumn{2}{l|}{金川幸太} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & ComentBox \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{このクラスはbodyで呼び出された箇所にコメントボックスを生成する} \\ \cline{2-3}
+                            & 入力 & int boxWidth, int boxHeight \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{なし} \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{button\_set.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{任意のテキストが書かれたボタンを生成するレイヤー} \\ \hline
+    責任者 & \multicolumn{2}{l|}{金川幸太} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & ButtonSet \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{bodyの呼び出された部分にボタンを設置するコンポーネント} \\ \cline{2-3}
+                            & 入力 & Sting buttonName \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{change\_general\_corporation.dartのChangeGeneralCorporationクラスを組み込む} \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{toggle\_button.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{二つの条件を切り替えるtoggleButtonを作成するレイヤー} \\ \hline
+    責任者 & \multicolumn{2}{l|}{新谷光城} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & ChangeToggleButton \\ \cline{2-3}
+                            & クラス種類 & ChangeNotifier \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{ToggleButtonにて使用するボタンが押されているか否かを判定するbool型の変数
+                            とその変数の値を変更する関数を定義するプロバイダ} \\ \cline{2-3}
+                            & 入力 & なし \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{なし} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & ToggleButton \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{二つの条件を切り替えるToggleButtonを作成するWidgetを返す} \\ \cline{2-3}
+                            & 入力 & \multicolumn{1}{p{12cm}|}{
+                            MediaQueryData mediaQuery, String leftName, String rightName, double buttonHeight} \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{
+                              toggleButton.dartのChangeToggleButtonクラスを組み込む
+                              \newline change\_general\_corporation.dartのChangeGeneralCorporationクラスを組み込む
+                            } \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{normal\_bottom\_appbar.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{BottomNavigationBarがない画面で用いるBottomAppBarを作成するコンポーネント} \\ \hline
+    責任者 & \multicolumn{2}{l|}{新谷光城} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & NormalBottomAppBar \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{色がついただけのBottomAppBarのWidgetを返すコンポーネント} \\ \cline{2-3}
+                            & 入力 & なし \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{なし} \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{title\_appbar.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{AppBarの下にページタイトルを表示するAppBarを作成するコンポーネント} \\ \hline
+    責任者 & \multicolumn{2}{l|}{新谷光城} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & TitleAppBar \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{AppBarのbottomにてもう一度AppBarを作成し、そこにページのタイトルを表示させるAppBarを生成するコンポーネント} \\ \cline{2-3}
+                            & 入力 & String appbarText, bool isReturn \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{popを行う} \\ \hline
+  \end{tabular}
+\end{table}
