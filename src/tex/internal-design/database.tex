@@ -1,6 +1,358 @@
 \section{データベース設計}
 以下に、本アプリケーションにおけるデータベース設計を示す。
-なお、都合上Userテーブルへの接続について分割を行っている。
+なお、都合上ER図においてはUserテーブルへの接続で分割を行っている。
+
+\begin{table}[H]
+  \centering
+  \caption{テーブル一覧}
+  \label{tab:table-list}
+  \begin{tabular}{|l|l|} \hline
+    テーブル名            & 説明                 \\ \hline \hline
+    users            & 一般利用者、法人の情報を格納する   \\ \hline
+    companies        & 企業の情報を格納する         \\ \hline
+    tags             & タグの情報を格納する         \\ \hline
+    jobs             & 求人の情報を格納する         \\ \hline
+    job\_times       & 求人の募集時間を格納する       \\ \hline
+    job\_tags        & 求人とタグの関連を格納する      \\ \hline
+    job\_bookmarks   & 求人のブックマークを格納する     \\ \hline
+    job\_watched     & 求人の閲覧履歴を格納する       \\ \hline
+    job\_reviews     & 求人のレビューを格納する       \\ \hline
+    applications     & 応募の情報を格納する         \\ \hline
+    events           & イベントの情報を格納する       \\ \hline
+    event\_times     & イベントの開催時間を格納する     \\ \hline
+    event\_tags      & イベントとタグの関連を格納する    \\ \hline
+    event\_bookmarks & イベントのブックマークを格納する   \\ \hline
+    event\_watched   & イベントの閲覧履歴を格納する     \\ \hline
+    event\_reviews   & イベントのレビューを格納する     \\ \hline
+    messages         & メッセージの情報を格納する      \\ \hline
+    message\_box     & メッセージとユーザーの関連を格納する \\ \hline
+    plans            & プランの情報を格納する        \\ \hline
+    purchases        & 購入の情報を格納する         \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{usersテーブル}
+  \label{tab:db-users}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約     & 型            & 説明          \\ \hline \hline
+    id          & PK     & int          & ユーザーを識別するもの \\ \hline
+    username    & NN, UQ & varchar(20)  & ユーザー名       \\ \hline
+    email       & NN, UQ & varchar(255) & メールアドレス     \\ \hline
+    password    & NN     & varchar(255) & パスワード       \\ \hline
+    sex         &        & char(1)      & 性別          \\ \hline
+    birthday    &        & date         & 誕生日         \\ \hline
+    user\_type  &        & char(1)      & ユーザーの種類     \\ \hline
+    is\_active  &        & boolean      & アカウントの有効化   \\ \hline
+    created\_at &        & datetime     & 作成日時        \\ \hline
+    updated\_at &        & datetime     & 更新日時        \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{companiesテーブル}
+  \label{tab:db-companies}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名           & 制約 & 型            & 説明          \\ \hline \hline
+    id             & PK & int          & 企業を識別するもの   \\ \hline
+    name           & NN & varchar(255) & 企業名         \\ \hline
+    postal\_code   &    & varchar(7)   & 郵便番号        \\ \hline
+    prefecture     &    & varchar(255) & 都道府県        \\ \hline
+    city           &    & varchar(255) & 市区町村        \\ \hline
+    address        &    & varchar(255) & 住所          \\ \hline
+    phone\_number  &    & varchar(255) & 電話番号        \\ \hline
+    email          &    & varchar(255) & メールアドレス     \\ \hline
+    homepage       &    & varchar(255) & ホームページ      \\ \hline
+    representative &    & varchar(255) & 代表者名        \\ \hline
+    created\_at    &    & datetime     & 作成日時        \\ \hline
+    updated\_at    &    & datetime     & 更新日時        \\ \hline
+    user\_id       & FK & int          & ユーザーを識別するもの \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{tagsテーブル}
+  \label{tab:db-tags}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約     & 型            & 説明        \\ \hline \hline
+    id          & PK     & int          & タグを識別するもの \\ \hline
+    name        & NN, UQ & varchar(255) & タグ名       \\ \hline
+    created\_at &        & datetime     & 作成日時      \\ \hline
+    updated\_at &        & datetime     & 更新日時      \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{jobsテーブル}
+  \label{tab:db-jobs}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名                & 制約 & 型            & 説明          \\ \hline \hline
+    id                  & PK & int          & 求人を識別するもの   \\ \hline
+    name                & NN & varchar(255) & 求人名         \\ \hline
+    salary              &    & int          & 給与          \\ \hline
+    working\_location   &    & varchar(255) & 勤務地         \\ \hline
+    job\_description    &    & text         & 求人の説明       \\ \hline
+    additional\_message &    & text         & 追加メッセージ     \\ \hline
+    is\_one\_day        &    & boolean      & 1日のみかどうか    \\ \hline
+    period              & NN & datetime     & 掲載期間        \\ \hline
+    status              &    & char(1)      & ステータス       \\ \hline
+    user\_id            & FK & int          & ユーザーを識別するもの \\ \hline
+    created\_at         &    & datetime     & 作成日時        \\ \hline
+    updated\_at         &    & datetime     & 更新日時        \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{job\_timesテーブル}
+  \label{tab:db-job-times}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約 & 型        & 説明             \\ \hline \hline
+    id          & PK & int      & 求人の募集時間を識別するもの \\ \hline
+    job\_id     & FK & int      & 求人を識別するもの      \\ \hline
+    start\_time & NN & datetime & 募集開始時間         \\ \hline
+    end\_time   & NN & datetime & 募集終了時間         \\ \hline
+    created\_at &    & datetime & 作成日時           \\ \hline
+    updated\_at &    & datetime & 更新日時           \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{job\_tagsテーブル}
+  \label{tab:db-job-tags}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約     & 型        & 説明        \\ \hline \hline
+    job\_id     & PK, FK & int      & 求人を識別するもの \\ \hline
+    tag\_id     & PK, FK & int      & タグを識別するもの \\ \hline
+    created\_at &        & datetime & 作成日時      \\ \hline
+    updated\_at &        & datetime & 更新日時      \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{job\_bookmarksテーブル}
+  \label{tab:db-job-bookmarks}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約     & 型        & 説明          \\ \hline \hline
+    user\_id    & PK, FK & int      & ユーザーを識別するもの \\ \hline
+    job\_id     & PK, FK & int      & 求人を識別するもの   \\ \hline
+    created\_at &        & datetime & 作成日時        \\ \hline
+    updated\_at &        & datetime & 更新日時        \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{job\_watchedテーブル}
+  \label{tab:db-job-watched}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約 & 型        & 説明             \\ \hline \hline
+    id          & PK & int      & 求人の閲覧履歴を識別するもの \\ \hline
+    created\_at &    & datetime & 作成日時           \\ \hline
+    updated\_at &    & datetime & 更新日時           \\ \hline
+    user\_id    & FK & int      & ユーザーを識別するもの    \\ \hline
+    job\_id     & FK & int      & 求人を識別するもの      \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{job\_reviewsテーブル}
+  \label{tab:db-job-reviews}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名          & 制約 & 型            & 説明             \\ \hline \hline
+    id            & PK & int          & 求人のレビューを識別するもの \\ \hline
+    title         & NN & varchar(255) & レビューのタイトル      \\ \hline
+    review        & NN & text         & レビューの内容        \\ \hline
+    review\_point & NN & int          & レビューの評価        \\ \hline
+    created\_at   &    & datetime     & 作成日時           \\ \hline
+    updated\_at   &    & datetime     & 更新日時           \\ \hline
+    user\_id      & FK & int          & ユーザーを識別するもの    \\ \hline
+    job\_id       & FK & int          & 求人を識別するもの      \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{applicationsテーブル}
+  \label{tab:db-applications}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約 & 型        & 説明          \\ \hline \hline
+    id          & PK & int      & 応募を識別するもの   \\ \hline
+    status      & NN & boolean  & 受領済みか否か     \\ \hline
+    created\_at &    & datetime & 作成日時        \\ \hline
+    updated\_at &    & datetime & 更新日時        \\ \hline
+    user\_id    & FK & int      & ユーザーを識別するもの \\ \hline
+    job\_id     & FK & int      & 求人を識別するもの   \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{eventsテーブル}
+  \label{tab:db-events}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名                & 制約 & 型            & 説明          \\ \hline \hline
+    id                  & PK & int          & イベントを識別するもの \\ \hline
+    name                & NN & varchar(255) & イベント名       \\ \hline
+    postal\_code        &    & varchar(7)   & 郵便番号        \\ \hline
+    prefecture          &    & varchar(255) & 都道府県        \\ \hline
+    city                &    & varchar(255) & 市区町村        \\ \hline
+    address             &    & varchar(255) & 住所          \\ \hline
+    phone\_number       &    & varchar(255) & 電話番号        \\ \hline
+    email               &    & varchar(255) & メールアドレス     \\ \hline
+    homepage            &    & varchar(255) & ホームページ      \\ \hline
+    event\_description  &    & text         & イベントの説明     \\ \hline
+    participation\_fee  &    & int          & 参加費         \\ \hline
+    capacity            &    & int          & 定員          \\ \hline
+    caution             &    & text         & 注意事項        \\ \hline
+    additional\_message &    & text         & 追加メッセージ     \\ \hline
+    period              & NN & datetime     & 掲載期間        \\ \hline
+    status              &    & char(1)      & ステータス       \\ \hline
+    user\_id            & FK & int          & ユーザーを識別するもの \\ \hline
+    created\_at         &    & datetime     & 作成日時        \\ \hline
+    updated\_at         &    & datetime     & 更新日時        \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{event\_timesテーブル}
+  \label{tab:db-event-times}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約 & 型        & 説明               \\ \hline \hline
+    id          & PK & int      & イベントの開催時間を識別するもの \\ \hline
+    event\_id   & FK & int      & イベントを識別するもの      \\ \hline
+    start\_time & NN & datetime & 開催開始時間           \\ \hline
+    end\_time   & NN & datetime & 開催終了時間           \\ \hline
+    created\_at &    & datetime & 作成日時             \\ \hline
+    updated\_at &    & datetime & 更新日時             \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{event\_tagsテーブル}
+  \label{tab:db-event-tags}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約     & 型        & 説明          \\ \hline \hline
+    event\_id   & PK, FK & int      & イベントを識別するもの \\ \hline
+    tag\_id     & PK, FK & int      & タグを識別するもの   \\ \hline
+    created\_at &        & datetime & 作成日時        \\ \hline
+    updated\_at &        & datetime & 更新日時        \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{event\_bookmarksテーブル}
+  \label{tab:db-event-bookmarks}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約     & 型        & 説明          \\ \hline \hline
+    user\_id    & PK, FK & int      & ユーザーを識別するもの \\ \hline
+    event\_id   & PK, FK & int      & イベントを識別するもの \\ \hline
+    created\_at &        & datetime & 作成日時        \\ \hline
+    updated\_at &        & datetime & 更新日時        \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{event\_watchedテーブル}
+  \label{tab:db-event-watched}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約 & 型        & 説明               \\ \hline \hline
+    id          & PK & int      & イベントの閲覧履歴を識別するもの \\ \hline
+    created\_at &    & datetime & 作成日時             \\ \hline
+    updated\_at &    & datetime & 更新日時             \\ \hline
+    user\_id    & FK & int      & ユーザーを識別するもの      \\ \hline
+    event\_id   & FK & int      & イベントを識別するもの      \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{event\_reviewsテーブル}
+  \label{tab:db-event-reviews}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名          & 制約 & 型            & 説明               \\ \hline \hline
+    id            & PK & int          & イベントのレビューを識別するもの \\ \hline
+    title         & NN & varchar(255) & レビューのタイトル        \\ \hline
+    review        & NN & text         & レビューの内容          \\ \hline
+    review\_point & NN & int          & レビューの評価          \\ \hline
+    created\_at   &    & datetime     & 作成日時             \\ \hline
+    updated\_at   &    & datetime     & 更新日時             \\ \hline
+    user\_id      & FK & int          & ユーザーを識別するもの      \\ \hline
+    event\_id     & FK & int          & イベントを識別するもの      \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{messagesテーブル}
+  \label{tab:db-messages}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約 & 型            & 説明           \\ \hline \hline
+    id          & PK & int          & メッセージを識別するもの \\ \hline
+    title       & NN & varchar(255) & メッセージのタイトル   \\ \hline
+    message     & NN & text         & メッセージの内容     \\ \hline
+    created\_at &    & datetime     & 作成日時         \\ \hline
+    updated\_at &    & datetime     & 更新日時         \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{message\_boxテーブル}
+  \label{tab:db-message-box}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約 & 型        & 説明                   \\ \hline \hline
+    id          & PK & int      & メッセージとユーザーの関連を識別するもの \\ \hline
+    is\_read    &    & boolean  & 既読か否か                \\ \hline
+    created\_at &    & datetime & 作成日時                 \\ \hline
+    updated\_at &    & datetime & 更新日時                 \\ \hline
+    user\_id    & FK & int      & ユーザーを識別するもの          \\ \hline
+    message\_id & FK & int      & メッセージを識別するもの         \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{plansテーブル}
+  \label{tab:db-plans}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約 & 型            & 説明         \\ \hline \hline
+    id          & PK & int          & プランを識別するもの \\ \hline
+    name        & NN & varchar(255) & プラン名       \\ \hline
+    price       & NN & int          & 価格         \\ \hline
+    period      & NN & int          & 期間         \\ \hline
+    created\_at &    & datetime     & 作成日時       \\ \hline
+    updated\_at &    & datetime     & 更新日時       \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{purchasesテーブル}
+  \label{tab:db-purchases}
+  \begin{tabular}{|l|l|l|l|} \hline
+    カラム名        & 制約 & 型        & 説明          \\ \hline \hline
+    id          & PK & int      & 購入を識別するもの   \\ \hline
+    is\_paid    & NN & boolean  & 支払い済みか否か    \\ \hline
+    created\_at &    & datetime & 作成日時        \\ \hline
+    updated\_at &    & datetime & 更新日時        \\ \hline
+    user\_id    & FK & int      & ユーザーを識別するもの \\ \hline
+    plan\_id    & FK & int      & プランを識別するもの  \\ \hline
+  \end{tabular}
+\end{table}
+
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=15cm]{./images/internal-design/ER-1.pdf}
