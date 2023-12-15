@@ -83,6 +83,29 @@
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|l|l|} \hline
+    モジュール名 & \multicolumn{2}{l|}{general\_form.dart} \\ \hline
+    モジュール概要 & \multicolumn{2}{p{12cm}|}{一般ユーザが入力するフォームを出力するコンポーネント} \\ \hline
+    責任者 & \multicolumn{2}{l|}{山本昇永} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & generalForm \\ \cline{2-3}
+                            & クラス種類 & extends StatelessWidget \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{一般ユーザ用の入力フォームのWidgetを動的に変更するクラス} \\ \cline{2-3}
+                            & 入力 & bool canEdit \\ \cline{2-3}
+                            & 出力 & Widget \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{なし} \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名 & GeneralFormState \\ \cline{2-3}
+                            & クラス種類 & extends State \\ \cline{2-3}
+                            & 処理概要 & \multicolumn{1}{p{12cm}|}{一般ユーザ用の入力フォームの状態を返すクラス} \\ \cline{2-3}
+                            & 入力 & なし \\ \cline{2-3}
+                            & 出力 & State \\ \cline{2-3}
+                            & \multicolumn{2}{l|}{他クラス・関数との関係} \\ \cline{2-3}
+                            & \multicolumn{2}{p{14cm}|}{text\_enter\_box.dartのTextEnterBoxクラスを呼び出すことで入力フォームを表示} \\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
     モジュール名 & \multicolumn{2}{l|}{finish\_screen.dart} \\ \hline
     モジュール概要 & \multicolumn{2}{p{12cm}|}{完了画面を生成するコンポーネント} \\ \hline
     責任者 & \multicolumn{2}{l|}{金川幸太} \\ \hline
