@@ -1,3 +1,4 @@
+\clearpage
 \section{モジュール設計}\label{sec:dart-module}
 
 \input{./tex/internal-design/table/overlay.tex}
@@ -6,55 +7,69 @@
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|l|l|} \hline
-    モジュール名 & \multicolumn{2}{l|}{change\_general\_corporation.dart} \\ \hline
-    モジュール概要 & \multicolumn{2}{p{12cm}|}{アプリ全体で使用するプロバイダモジュール} \\ \hline
-    責任者 & \multicolumn{2}{l|}{新谷光城} \\ \hline
-    \multirow{7}{*}{構成要素} & クラス名 & ChangeGeneralCorporation      \\ \cline{2-3}
-      & クラス種類 & ChangeNotifier \\ \cline{2-3}
-      & 処理概要 & \multicolumn{1}{p{12cm}|}{アプリ全体で使用する一般法人の判断を行うbool型変数、色を定義している。
-      また、一般法人の値が変更されると、それに対応した色へと変更が行われる。} \\ \cline{2-3}
-      & 入力 & なし \\ \cline{2-3}
-      & 出力 & なし \\ \cline{2-3}
-      & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
-      & \multicolumn{2}{p{14cm}|}{なし}  \\ \hline
+    モジュール名                & \multicolumn{2}{l|}{change\_general\_corporation.dart}                                                                   \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{アプリ全体で使用するプロバイダモジュール}                                                                          \\ \hline
+    責任者                   & \multicolumn{2}{l|}{新谷光城}                                                                                                \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                   & ChangeGeneralCorporation                                        \\ \cline{2-3}
+                          & クラス種類                                                  & ChangeNotifier                                                  \\ \cline{2-3}
+                          & 処理概要                                                   & \multicolumn{1}{p{12cm}|}{アプリ全体で使用する一般法人の判断を行うbool型変数、色を定義している。
+    また、一般法人の値が変更されると、それに対応した色へと変更が行われる。}                                                                                                             \\ \cline{2-3}
+                          & 入力                                                     & なし                                                              \\ \cline{2-3}
+                          & 出力                                                     & なし                                                              \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                         \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{なし}                                                                                            \\ \hline
   \end{tabular}
 \end{table}
 \subsection{page}
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|l|l|} \hline
-    モジュール名                   & \multicolumn{2}{l|}{root\_page.dart}  \\ \hline
-    モジュール概要                  & \multicolumn{2}{p{12cm}|}{ログイン以外のアプリを包括するモジュール}           \\ \hline
-    責任者                  & \multicolumn{2}{l|}{新谷光城}           \\ \hline
-    \multirow{7}{*}{構成要素}       & クラス名 & RootPage      \\ \cline{2-3}
-                               & クラス種類 & extends StatelessWidget \\ \cline{2-3}
-                               & 処理概要 & \multicolumn{1}{p{12cm}|}{ログイン以外のアプリの包括を行い、ボトムアップバーを作成するクラス} \\ \cline{2-3}
-                               & 入力 & なし \\ \cline{2-3}
-                                & 出力 & Widget \\ \cline{2-3}
-                                & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
-                                & \multicolumn{2}{p{14cm}|}{change\_general\_corporation.dartのChangeGeneralCorporationクラスを組み込む\newline app\_router.gr.dartのHomeRouterRouteクラスを組み込む
-                                \newline app\_router.gr.dartのEventRouterRouteクラスを組み込む
-                                \newline app\_router.gr.dartのJobRouterRouteクラスを組み込む
-                                \newline app\_router.gr.dartのMyPageRouterRouteクラスを組み込む}  \\ \hline
+    モジュール名                & \multicolumn{2}{l|}{root\_page.dart}                                                                                                                                                                            \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{ログイン以外のアプリを包括するモジュール}                                                                                                                                                                 \\ \hline
+    責任者                   & \multicolumn{2}{l|}{新谷光城}                                                                                                                                                                                       \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                                                                                             & RootPage                                                     \\ \cline{2-3}
+                          & クラス種類                                                                                                                                            & extends StatelessWidget                                      \\ \cline{2-3}
+                          & 処理概要                                                                                                                                             & \multicolumn{1}{p{12cm}|}{ログイン以外のアプリの包括を行い、ボトムアップバーを作成するクラス} \\ \cline{2-3}
+                          & 入力                                                                                                                                               & なし                                                           \\ \cline{2-3}
+                          & 出力                                                                                                                                               & Widget                                                       \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                                                                                                                \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{change\_general\_corporation.dartのChangeGeneralCorporationクラスを組み込む\newline app\_router.gr.dartのHomeRouterRouteクラスを組み込む
+      \newline app\_router.gr.dartのEventRouterRouteクラスを組み込む
+      \newline app\_router.gr.dartのJobRouterRouteクラスを組み込む
+    \newline app\_router.gr.dartのMyPageRouterRouteクラスを組み込む}                                                                                                                                                                                 \\ \hline
   \end{tabular}
 \end{table}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 1.0]{./images/internal-design/state_change_diagram/root/root_page.pdf}
+  \caption{root\_page.dartの状態遷移図}
+\end{figure}
+
+
+\clearpage
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|l|l|} \hline
-    モジュール名                   & \multicolumn{2}{l|}{change\_root\_page.dart}  \\ \hline
-    モジュール概要                  & \multicolumn{2}{p{12cm}|}{アプリ全体を包括するモジュール}           \\ \hline
-    責任者                  & \multicolumn{2}{l|}{新谷光城}           \\ \hline
-    \multirow{7}{*}{構成要素}       & クラス名 &  ChangeRootPage     \\ \cline{2-3}
-                               & クラス種類 & extends StatelessWidget \\ \cline{2-3}
-                               & 処理概要 & \multicolumn{1}{p{12cm}|}{アプリの大まかな区別であるLoginRouteとRootRouteを包括しているクラス} \\ \cline{2-3}
-                               & 入力 & なし \\ \cline{2-3}
-                                & 出力 & Widget \\ \cline{2-3}
-                                & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
-                                & \multicolumn{2}{p{14cm}|}{app\_router.gr.dartのLoginRouteクラスを組み込む
-                                \newline app\_router.gr.dartのRootRouteクラスを組み込む}  \\ \hline
+    モジュール名                & \multicolumn{2}{l|}{change\_root\_page.dart}                                                                                              \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{アプリ全体を包括するモジュール}                                                                                                \\ \hline
+    責任者                   & \multicolumn{2}{l|}{新谷光城}                                                                                                                 \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                             & ChangeRootPage                                                         \\ \cline{2-3}
+                          & クラス種類                                                            & extends StatelessWidget                                                \\ \cline{2-3}
+                          & 処理概要                                                             & \multicolumn{1}{p{12cm}|}{アプリの大まかな区別であるLoginRouteとRootRouteを包括しているクラス} \\ \cline{2-3}
+                          & 入力                                                               & なし                                                                     \\ \cline{2-3}
+                          & 出力                                                               & Widget                                                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                                          \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{app\_router.gr.dartのLoginRouteクラスを組み込む
+    \newline app\_router.gr.dartのRootRouteクラスを組み込む}                                                                                                                   \\ \hline
   \end{tabular}
 \end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 1.0]{./images/internal-design/state_change_diagram/root/change_route_page.pdf}
+  \caption{change\_root\_page.dartの状態遷移図}
+\end{figure}
 
 \input{./tex/internal-design/table/mypage.tex}
 \input{./tex/internal-design/table/login.tex}
