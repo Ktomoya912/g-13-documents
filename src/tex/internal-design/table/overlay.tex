@@ -1,35 +1,299 @@
 \subsection{overlay}
 
-\begin{table}[H]
-  \centering
-  \begin{tabular}{|c|l|l|} \hline
-    モジュール名 & \multicolumn{2}{l|}{rule\_screen.dart}  \\ \hline
-    モジュール概要 & \multicolumn{2}{p{12cm}|}{利用規約のオーバーレイで表示される内容を生成するコンポーネント} \\ \hline
-    責任者 & \multicolumn{2}{l|}{金川幸太} \\ \hline
-    \multirow{7}{*}{構成要素} & クラス名 & RuleScreen      \\ \cline{2-3}
-      & クラス種類 & OverlayEntry \\ \cline{2-3}
-      & 処理概要 & \multicolumn{1}{p{12cm}|}{オーバーレイの内容を返す} \\ \cline{2-3}
-      & 入力 & Buildcontext context, String text \\ \cline{2-3}
-      & 出力 & Material \\ \cline{2-3}
-      & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
-      & \multicolumn{2}{p{14cm}|}{ボタンを押すことで、rule\_screen.dartのRuleScreen().show(context, text)が呼び出され、オーバレイ表示
-      ElevatedButtonの処理がされると、RuleScreen().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる}  \\ \hline
-  \end{tabular}
-\end{table}
 
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|l|l|} \hline
-    モジュール名 & \multicolumn{2}{l|}{rule\_screen\_controller.dart}  \\ \hline
-    モジュール概要 & \multicolumn{2}{p{12cm}|}{オーバーレイの表示、非表示の操作を行うコンポーネント}           \\ \hline
-    責任者 & \multicolumn{2}{l|}{金川幸太}           \\ \hline
-    \multirow{7}{*}{構成要素}  & クラス名 & RuleScreenControl      \\ \cline{2-3}
-      & クラス種類 & immutable \\ \cline{2-3}
-      & 処理概要 & \multicolumn{1}{p{12cm}|}{オーバーレイの内容を返す} \\ \cline{2-3}
-      & 入力 & String text(option) \\ \cline{2-3}
-      & 出力 & Widget \\ \cline{2-3}
-      & \multicolumn{2}{l|}{他クラス・関数との関係}  \\ \cline{2-3}
-      & \multicolumn{2}{p{14cm}|}{ CloseLoadingScreenによってオーバレイを閉じる \newline
-      UpdateLoadingScreenによってオーバーレイを表示}  \\ \hline
+    モジュール名                & \multicolumn{2}{l|}{rule\_screen.dart}                                                                                         \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{利用規約のオーバーレイで表示される内容を生成するコンポーネント}                                                                     \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                      \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                                & RuleScreen                               \\ \cline{2-3}
+                          & クラス種類                                                                               & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                                & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                                  & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                                  & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                               \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{rule\_screen.dartのRuleScreen().show(context)を呼び出すとオーバレイ表示
+    \newline 閉じるを押すことでRuleScreen().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる}                                                                                \\ \hline
   \end{tabular}
 \end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{./images/internal-design/state_change_diagram/overlay/rule_screen.pdf}
+  \caption{rule\_screen.dartの状態遷移図}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{logout.dart}                                                                                     \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{ログアウトするかどうかを確認するオーバーレイ}                                                                    \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                            \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                      & LogOut                                   \\ \cline{2-3}
+                          & クラス種類                                                                     & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                      & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                        & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                        & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                     \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{logout.dartのLogOut().show(context)を呼び出すとオーバレイ表示
+      \newline キャンセルを押すとLogOut().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+    \newline ログアウトを押すことでlogin\_page.dartのLoginPageクラスを呼び出すことで、ログイン画面を表示}                                                                         \\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{./images/internal-design/state_change_diagram/overlay/logout.pdf}
+  \caption{logout.dartの状態遷移図}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{secession.dart}                                                                                        \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{退会の可否確認画面を表示するオーバーレイ}                                                                            \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                  \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                            & Secession                                \\ \cline{2-3}
+                          & クラス種類                                                                           & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                            & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                              & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                              & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                           \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{secession.dartのSecession().show(context)を呼び出すとオーバレイ表示
+      \newline キャンセルが押されるとSecession().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+      \newline 退会を押すと退会処理後、Secession().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+    }                                                                                                                                                  \\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.9]{./images/internal-design/state_change_diagram/overlay/secession.pdf}
+  \caption{secession.dartの状態遷移図}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{conf\_conf.dart}                                                                                       \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{退会の可否確認画面を表示するオーバーレイ}                                                                            \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                  \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                            & ConfConf                                 \\ \cline{2-3}
+                          & クラス種類                                                                           & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                            & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                              & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                              & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                           \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{conf\_conf.dartのConfConf().show(context)を呼び出すとオーバレイ表示
+      \newline キャンセルが押されるとConfConf().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+      \newline 確認を押すと確認確定処理後、ConfConf().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+    }                                                                                                                                                  \\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{./images/internal-design/state_change_diagram/overlay/conf_conf.pdf}
+  \caption{conf\_conf.dartの状態遷移図}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{delete\_conf.dart}                                                                                         \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{投稿の削除を確認するオーバーレイ}                                                                                    \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                      \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                                & DeleteConf                               \\ \cline{2-3}
+                          & クラス種類                                                                               & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                                & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                                  & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                                  & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                               \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{delete\_conf.dartのDeleteConf().show(context)を呼び出すとオーバレイ表示
+      \newline キャンセルが押されるとDeleteConf().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+      \newline 削除を押すと削除処理後、DeleteConf().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+    }                                                                                                                                                      \\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{./images/internal-design/state_change_diagram/overlay/delete_conf.pdf}
+  \caption{delete\_conf.dartの状態遷移図}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{post\_conf.dart}                                                                                       \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{本当に投稿するか確認するオーバーレイ}                                                                              \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                  \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                            & PostConf                                 \\ \cline{2-3}
+                          & クラス種類                                                                           & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                            & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                              & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                              & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                           \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{post\_conf.dartのPostConf().show(context)を呼び出すとオーバレイ表示
+      \newline キャンセルを押すとPostConf().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+      \newline 投稿するを押すと投稿確定処理後、PostConf().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+    }                                                                                                                                                  \\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{./images/internal-design/state_change_diagram/overlay/post_conf.pdf}
+  \caption{post\_conf.dartの状態遷移図}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{return\_write.dart}                                                                                           \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{必須項目を記入せずに投稿ボタンを押した際にでるオーバーレイ}                                                                          \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                         \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                                   & ReturnWrite                              \\ \cline{2-3}
+                          & クラス種類                                                                                  & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                                   & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                                     & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                                     & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                                  \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{return\_write.dartのReturnWrite().show(context)が呼び出され、オーバレイ表示
+      \newline 戻るを押すとReturnWrite().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+    }                                                                                                                                                         \\ \hline
+  \end{tabular}
+\end{table}\par
+\ \par
+\ \par
+\ \par
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.3]{./images/internal-design/state_change_diagram/overlay/return_write.pdf}
+  \caption{return\_write.dartの状態遷移図}
+\end{figure}
+\clearpage
+
+
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{move\_conf.dart}                                                                                          \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{投稿内容を記入中に移動してもよいのかの確認オーバーレイ}                                                                        \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                     \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                               & MoveConf                                 \\ \cline{2-3}
+                          & クラス種類                                                                              & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                               & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                                 & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                                 & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                              \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{move\_conf.dartのMoveConf().show(context)が呼び出されるとオーバレイを表示
+      \newline キャンセルを押すとMoveConf().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+      \newline 移動するを選択するとこのオーバーレイ表示前に選択された画面のクラスを呼び出し遷移する
+    }                                                                                                                                                     \\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{./images/internal-design/state_change_diagram/overlay/move_conf.pdf}
+  \caption{move\_conf.dartの状態遷移図}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{notpost\_delete\_conf.dart}                                                                                                   \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{未投稿の内容を削除することへの確認オーバーレイ}                                                                                                \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                                         \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                                                   & NotpostDeleteConf                        \\ \cline{2-3}
+                          & クラス種類                                                                                                  & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                                                   & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                                                     & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                                                     & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                                                  \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{notpost\_delete\_conf.dartのNotpostDeleteConf().show(context)が呼び出されるとオーバレイを表示
+      \newline キャンセルを押すとNotpostDeleteConf().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+      \newline 削除するが押されるとNotpostDeleteConf().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+    }                                                                                                                                                                         \\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{./images/internal-design/state_change_diagram/overlay/notpost_delete_conf.pdf}
+  \caption{notpost\_delete\_conf.dartの状態遷移図}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{select\_post.dart}                                                                                            \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{投稿内容選択オーバーレイ}                                                                                           \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                         \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                                   & SelectPost                               \\ \cline{2-3}
+                          & クラス種類                                                                                  & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                                   & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                                     & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                                     & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                                  \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{select\_post.dartのSelectPost().show(context)が呼び出されるとオーバレイを表示
+      \newline キャンセル押すとSelectPost().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+      \newline 投稿するが押されるとイベント・求人のDB処理後、SelectPost().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+    }                                                                                                                                                         \\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.9]{./images/internal-design/state_change_diagram/overlay/select_post.pdf}
+  \caption{select\_post.dartの状態遷移図}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|l|l|} \hline
+    モジュール名                & \multicolumn{2}{l|}{job\_app.dart}                                                                                        \\ \hline
+    モジュール概要               & \multicolumn{2}{p{12cm}|}{選択した求人広告への応募をするかの確認をするオーバーレイ}                                                                   \\ \hline
+    責任者                   & \multicolumn{2}{l|}{金川幸太}                                                                                                 \\ \hline
+    \multirow{7}{*}{構成要素} & クラス名                                                                           & JobApp                                   \\ \cline{2-3}
+                          & クラス種類                                                                          & OverlayEntry                             \\ \cline{2-3}
+                          & 処理概要                                                                           & \multicolumn{1}{p{12cm}|}{Overlayの内容を返す} \\ \cline{2-3}
+                          & 入力                                                                             & Buildcontext context                     \\ \cline{2-3}
+                          & 出力                                                                             & Material                                 \\ \cline{2-3}
+                          & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                                          \\ \cline{2-3}
+                          & \multicolumn{2}{p{14cm}|}{job\_app.dartのJobApp().show(context)が呼び出されるとオーバレイを表示
+      \newline キャンセル押すとJobApp().hide()によりcontrolle.closeが呼び出されオーバレイを閉じる
+      \newline 応募が押されるとfinish\_screen.dartのFinishScreenクラスが呼び出される
+    }                                                                                                                                                 \\ \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1.1]{./images/internal-design/state_change_diagram/overlay/job_app.pdf}
+  \caption{finish\_screen.dartの状態遷移図}
+\end{figure}
