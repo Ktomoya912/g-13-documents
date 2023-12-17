@@ -1,8 +1,15 @@
 \clearpage
 \section{モジュール設計}\label{sec:dart-module}
+以下に本アプリケーションのモジュール設計を示す。
+\begin{itemize}
+  \item 節\ref{sec:overlay}, \texttt{overlay}は、アプリケーション上で一番上のレイヤーに表示されるウィジェットをまとめたモジュールについて記述している。
+  \item 節\ref{sec:provider}, \texttt{provider}は、アプリケーション全体で使用する共通の変数をまとめたモジュールについて記述している。
+  \item 節\ref{sec:page}, \texttt{page}は、アプリケーションの画面をまとめたモジュールについて記述している。
+  \item 節\ref{sec:component}, \texttt{component}は、pageで用いられるパーツをまとめたモジュールについて記述している。
+\end{itemize}
 
 \input{./tex/internal-design/table/overlay.tex}
-\subsection{provider}
+\subsection{provider}\label{sec:provider}
 
 \begin{table}[H]
   \centering
@@ -137,7 +144,7 @@
 \end{table}
 
 \clearpage
-\subsection{page}
+\subsection{page}\label{sec:page}
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|l|l|} \hline
