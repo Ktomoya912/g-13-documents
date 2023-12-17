@@ -1,8 +1,39 @@
 \clearpage
 \section{モジュール設計}\label{sec:dart-module}
+以下に本アプリケーションのモジュール設計を示す。
+\begin{itemize}
+  \item 節\ref{sec:overlay}, \texttt{overlay}は、アプリケーション上で一番上のレイヤーに表示されるウィジェットをまとめたモジュールについて記述している。
+  \item 節\ref{sec:provider}, \texttt{provider}は、アプリケーション全体で使用する共通の変数をまとめたモジュールについて記述している。
+  \item 節\ref{sec:page}, \texttt{page}は、アプリケーションの画面をまとめたモジュールについて記述している。
+  \item 節\ref{sec:component}, \texttt{component}は、pageで用いられるパーツをまとめたモジュールについて記述している。
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/internal-design/abstract/overlay.pdf}
+  \caption{overlayのモジュール構成図}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/internal-design/abstract/provider.pdf}
+  \caption{providerのモジュール構成図}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/internal-design/abstract/page.pdf}
+  \caption{pageのモジュール構成図}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=15cm]{./images/internal-design/abstract/component.pdf}
+  \caption{componentのモジュール構成図}
+\end{figure}
 
 \input{./tex/internal-design/table/overlay.tex}
-\subsection{provider}
+\subsection{provider}\label{sec:provider}
 
 \begin{table}[H]
   \centering
@@ -21,10 +52,7 @@
   \end{tabular}
 \end{table}
 
-\begin{table}[H]
-  \centering
-  \scalebox{0.7}[0.6]{
-    \begin{tabular}{|c|l|l|} \hline
+\begin{longtable}{|c|l|l|} \hline
       モジュール名                & \multicolumn{2}{l|}{app\_router.gr.dart}                                                          \\ \hline
       モジュール概要               & \multicolumn{2}{p{12cm}|}{RouteをRouterに変換するモジュール}                                                 \\ \hline
       責任者                   & \multicolumn{2}{l|}{新谷光城}                                                                         \\ \hline
@@ -112,9 +140,8 @@
                             & 出力                                                & なし                                            \\ \cline{2-3}
                             & \multicolumn{2}{l|}{他クラス・関数との関係}                                                                  \\ \cline{2-3}
                             & \multicolumn{2}{p{14cm}|}{なし}                                                                     \\ \hline
-    \end{tabular}
-  }
-\end{table}
+  
+\end{longtable}
 
 \begin{table}[H]
   \centering
@@ -141,7 +168,7 @@
 \end{table}
 
 \clearpage
-\subsection{page}
+\subsection{page}\label{sec:page}
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|l|l|} \hline
